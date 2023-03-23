@@ -102,28 +102,28 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[Ubuntu security podcast]
     # https://ubuntusecuritypodcast.org
     if header :is "X-RSS-Feed" "https://ubuntusecuritypodcast.org/" {
-        fileinto :create "INBOX/Feed/Weekly update/Ubuntu sec podcast";
+        fileinto :create "Feed.Weekly update.Ubuntu sec podcast";
         stop;
     }
 
     # rule:[SSD Secure Disclosure]
     # https://www.youtube.com/channel/UC9ZnYbYqOe6Y3eRdw0TMz9Q
     if header :is "X-RSS-Feed" "https://www.youtube.com/channel/UC9ZnYbYqOe6Y3eRdw0TMz9Q" {
-        fileinto :create "INBOX/Feed/Weekly update/SSD";
+        fileinto :create "Feed.Weekly update.SSD";
         stop;
     }
 
     # rule:[AT&T Youtube tech channel]
     # https://www.youtube.com/channel/UCnpDurxReTSpFs5-AhDo8Kg
     if header :is "X-RSS-Feed" "https://www.youtube.com/channel/UCnpDurxReTSpFs5-AhDo8Kg" {
-        fileinto :create "INBOX/Feed/Weekly update/AT&T";
+        fileinto :create "Feed.Weekly update.AT&T";
         stop;
     }
 
     # rule:[Dayzerosec Podcast]
     # https://dayzerosec.com/podcast/
     if header :is "X-RSS-Feed" "https://dayzerosec.com/" {
-        fileinto :create "INBOX/Feed/Weekly update/Dayzerosec";
+        fileinto :create "Feed.Weekly update.Dayzerosec";
         stop;
     }
 
@@ -141,14 +141,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # http://blog.chromium.org
     if allof ( header :contains "X-RSS-Feed" "blog.chromium.org",
                header :contains "Keywords" "security" ) {
-        fileinto :create "INBOX/Feed/Blog/Chromium";
+        fileinto :create "Feed.Blog.Chromium";
         stop;
     }
 
     # rule:[Chrome Blog (security)]
     # http://security.googleblog.com/
     if header :contains "X-RSS-Feed" "http://security.googleblog.com/" {
-        fileinto :create "INBOX/Feed/Blog/Chrome";
+        fileinto :create "Feed.Blog.Chrome";
         stop;
     }
 
@@ -156,42 +156,42 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://blog.google
     if allof ( header :is "X-RSS-Feed" "https://blog.google/",
                header :contains "Keywords" "security" ) {
-        fileinto :create "INBOX/Feed/Blog/Google";
+        fileinto :create "Feed.Blog.Google";
         stop;
     }
 
     # rule:[Microsoft Security Blog]
     # https://www.microsoft.com/security/blog
     if header :is "X-RSS-Feed" "https://www.microsoft.com/security/blog" {
-        fileinto :create "INBOX/Feed/Blog/Microsoft";
+        fileinto :create "Feed.Blog.Microsoft";
         stop;
     }
 
     # rule:[Microsoft Security Response Center Blog]
     # https://msrc-blog.microsoft.com
     if header :is "X-RSS-Feed" "https://msrc-blog.microsoft.com" {
-        fileinto :create "INBOX/Feed/Blog/Microsoft";
+        fileinto :create "Feed.Blog.Microsoft";
         stop;
     }
 
     # rule:[GitHub Security Blog]
     # https://github.blog/category/security/feed/
     if header :contains "X-RSS-Feed" "https://github.blog" {
-        fileinto :create "INBOX/Feed/Blog/Github";
+        fileinto :create "Feed.Blog.Github";
         stop;
     }
 
     # rule:[Mozilla Security Blog]
     # https://blog.mozilla.org/security
     if header :is "X-RSS-Feed" "https://blog.mozilla.org/security" {
-        fileinto :create "INBOX/Feed/Blog/Mozilla";
+        fileinto :create "Feed.Blog.Mozilla";
         stop;
     }
 
     # rule:[Darknet Diaries Podcast]
     # https://darknetdiaries.com/
     if header :is "X-RSS-Feed" "https://darknetdiaries.com/" {
-        fileinto :create "INBOX/Feed/Blog/Darknet Diaries";
+        fileinto :create "Feed.Blog.Darknet Diaries";
         stop;
     }
 
@@ -201,14 +201,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     if allof (  header :is "X-RSS-Feed" "https://blog.torproject.org/",
                 not header :contains "Subject" "New",
                 not header :contains "Subject" "Release:" ) {
-        fileinto :create "INBOX/Feed/Blog/TOR";
+        fileinto :create "Feed.Blog.TOR";
         stop;
     }
 
     # rule:[Guerre di rete]
     # https://guerredirete.substack.com
     if header :is "X-RSS-Feed" "https://guerredirete.substack.com" {
-        fileinto :create "INBOX/Feed/Blog/Guerredirete";
+        fileinto :create "Feed.Blog.Guerredirete";
         addflag "italian";
         stop;
     }
@@ -218,7 +218,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://stackoverflow.blog
     if header :is "X-RSS-Feed" "https://stackoverflow.blog" {
         if header :contains "Keywords" "security" {
-            fileinto :create "INBOX/Feed/Blog/Stackoverflow";
+            fileinto :create "Feed.Blog.Stackoverflow";
             stop;
         }
     }
@@ -226,7 +226,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[Justin Steven SA]
     # https://github.com/justinsteven/advisories
     if header :is "X-RSS-Feed" "https://github.com/justinsteven/advisories/commits/main" {
-        fileinto :create "INBOX/Feed/Blog/Good Reads";
+        fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
 
@@ -234,7 +234,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # Cryptography Dispatches by Filippo Valsorda (AKA FiloSottile)
     # https://buttondown.email/cryptography-dispatches
     if header :is "X-RSS-Feed" "https://buttondown.email/cryptography-dispatches" {
-        fileinto :create "INBOX/Feed/Blog/Good Reads";
+        fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
 
@@ -242,7 +242,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # Lennart Poettering personal blog
     # https://0pointer.net/blog
     if header :is "X-RSS-Feed" "https://0pointer.net/blog/" {
-        fileinto :create "INBOX/Feed/Blog/Good Reads";
+        fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
 
@@ -253,7 +253,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # Center for Transparency and Digital Human Rights
     # https://www.hermescenter.org/press/
     if header :is "X-RSS-Feed" "https://www.hermescenter.org" {
-        fileinto :create "INBOX/Feed/Blog/Activism";
+        fileinto :create "Feed.Blog.Activism";
         addflag "italian";
         stop;
     }
@@ -262,7 +262,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.copernicani.it
     if allof ( header :is "X-RSS-Feed" "https://www.copernicani.it",
                header :contains "Keywords" [ "cybersecurity", "cyberwarfare" ] ) {
-        fileinto :create "INBOX/Feed/Blog/Activism";
+        fileinto :create "Feed.Blog.Activism";
         addflag "italian";
         stop;
     }
@@ -279,7 +279,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
                         addflag "italian";
                     }
 
-                    fileinto :create "INBOX/Feed/Blog/Sentinelone";
+                    fileinto :create "Feed.Blog.Sentinelone";
                     stop;
     }
 
@@ -287,56 +287,56 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://blog.cloudflare.com
     if allof ( header :is "X-RSS-Feed" "https://blog.cloudflare.com/",
                header :contains "Keywords" [ "security", "Vulnerabilit" ] ) {
-        fileinto :create "INBOX/Feed/Blog/Cloudflare";
+        fileinto :create "Feed.Blog.Cloudflare";
         stop;
     }
 
     # rule:[Grsecurity]
     # https://www.grsecurity.net/blog
     if header :is "X-RSS-Feed" "https://www.grsecurity.net/blog.rss" {
-        fileinto :create "INBOX/Feed/Blog/Good Reads";
+        fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
 
     # rule:[Intezer]
     # https://www.intezer.com/blog/
     if header :is "X-RSS-Feed" "https://www.intezer.com" {
-        fileinto :create "INBOX/Feed/Blog/Intezer";
+        fileinto :create "Feed.Blog.Intezer";
         stop;
     }
 
     # rule:[Avast]
     # https://decoded.avast.io/
     if header :is "X-RSS-Feed" "https://decoded.avast.io" {
-        fileinto :create "INBOX/Feed/Blog/Avast";
+        fileinto :create "Feed.Blog.Avast";
         stop;
     }
 
     # rule:[Security Nation]
     # https://rapid7.com/resources/podcasts
     if header :is "X-RSS-Feed" "https://rapid7.com/resources/podcasts" {
-        fileinto :create "INBOX/Feed/Blog/Security Nation";
+        fileinto :create "Feed.Blog.Security Nation";
         stop;
     }
 
     # rule:[Google Project Zero]
     # https://googleprojectzero.blogspot.com/
     if header :contains "X-RSS-Feed" "https://googleprojectzero.blogspot.com" {
-        fileinto :create "INBOX/Feed/Blog/Project Zero";
+        fileinto :create "Feed.Blog.Project Zero";
         stop;
     }
 
     # rule:[Thunderbird Blog]
     # https://blog.thunderbird.net
     if header :contains "X-RSS-Feed" "https://blog.thunderbird.net" {
-        fileinto :create "INBOX/Feed/Blog/Thunderbird";
+        fileinto :create "Feed.Blog.Thunderbird";
         stop;
     }
 
     # rule:[David Buchanan blog]
     # https://www.da.vidbuchanan.co.uk/blog/
     if header :contains "X-RSS-Feed" "https://www.da.vidbuchanan.co.uk/blog/" {
-        fileinto :create "INBOX/Feed/Blog/Good Reads";
+        fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
 
@@ -350,7 +350,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[AppSec]
     # https://github.com/Simpsonpt/AppSecEzine
     if header :is "X-RSS-Feed" "https://github.com/Simpsonpt/AppSecEzine/commits/master" {
-        fileinto :create "INBOX/Feed/Ezine/AppSec";
+        fileinto :create "Feed.Ezine.AppSec";
         stop;
     }
 
@@ -359,14 +359,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.sultanik.com/pocorgtfo/
     if allof ( header :is       "X-RSS-Feed" "https://www.sultanik.com/",
                header :contains "X-RSS-Link" "https://www.sultanik.com/pocorgtfo" ) {
-        fileinto :create "INBOX/Feed/Ezine/POCorGTFO";
+        fileinto :create "Feed.Ezine.POCorGTFO";
         stop;
     }
 
     # rule:[uninformed]
     # http://uninformed.org/
     if header :is "X-RSS-Feed" "http://uninformed.org/" {
-        fileinto :create "INBOX/Feed/Ezine/Uninformed";
+        fileinto :create "Feed.Ezine.Uninformed";
         stop;
     }
 
@@ -380,14 +380,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[GitHub Security Advisory]
     # https://securitylab.github.com/
     if header :is "X-RSS-Feed" "https://securitylab.github.com/" {
-        fileinto :create "INBOX/Feed/SA/Github";
+        fileinto :create "Feed.SA.Github";
         stop;
     }
 
     # rule:[Drupal]
     # https://www.drupal.org/security
     if header :contains "X-RSS-Feed" "https://www.drupal.org/security" {
-        fileinto :create "INBOX/Feed/SA/Drupal";
+        fileinto :create "Feed.SA.Drupal";
         stop;
     }
 
@@ -395,7 +395,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://powerdns.com
     if allof ( header :is "X-RSS-Feed" "https://blog.powerdns.com",
                header :contains "Subject" "Security Advisory" ) {
-        fileinto :create "INBOX/Feed/SA/PowerDNS";
+        fileinto :create "Feed.SA.PowerDNS";
         stop;
     }
 
@@ -403,7 +403,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://rustsec.org - SA for Rust crates published via crates.io
     if header :is "X-RSS-Feed" "https://rustsec.org/" {
         addflag "rustsec";
-        fileinto :create "INBOX/Feed/SA/Rust";
+        fileinto :create "Feed.SA.Rust";
         stop;
     }
 
@@ -412,7 +412,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     if allof (  header :is "X-RSS-Feed" "https://blog.rust-lang.org/",
                 header :contains "Subject" "Security advisor" ) {
                     addflag "rust-blog";
-                    fileinto :create "INBOX/Feed/SA/Rust";
+                    fileinto :create "Feed.SA.Rust";
                     stop;
     }
 
@@ -451,14 +451,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[Fedora]
     # https://bodhi.fedoraproject.org/updates/?search=&type=security
     if header :is "X-RSS-Feed" "https://bodhi.fedoraproject.org/rss/updates/?search=&status=stable&type=security" {
-        fileinto :create "INBOX/Feed/SA/Distro/Fedora";
+        fileinto :create "Feed.SA.Distro.Fedora";
         stop;
     }
 
     # rule:[GCP]
     # https://cloud.google.com/support/bulletins
     if header :contains "X-RSS-Link" "https://cloud.google.com/support/bulletins/index#" {
-        fileinto :create "INBOX/Feed/SA/GCP";
+        fileinto :create "Feed.SA.GCP";
         stop;
     }
 
@@ -474,7 +474,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[TOR SA]
     # https://tails.boum.org/security/index.en.html
     if header :contains "X-RSS-Feed" "https://tails.boum.org/security/index.en.html" {
-        fileinto :create "INBOX/Feed/SA/TOR";
+        fileinto :create "Feed.SA.TOR";
         stop;
     }
 
@@ -482,7 +482,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.videolan.org/security/
     if allof( header :contains "X-RSS-Feed" "http://www.videolan.org/",
               body :contains [ "security", "affected" ] ) {
-        fileinto :create "INBOX/Feed/SA/VLC";
+        fileinto :create "Feed.SA.VLC";
         stop;
     }
 
@@ -501,35 +501,35 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     if allof ( header :contains "X-RSS-Feed" "chromereleases.googleblog.com",
                header :contains "Keywords" "Desktop Update",
                header :contains "Keywords" "Stable updates" ) {
-        fileinto :create "INBOX/Feed/Release/Chrome";
+        fileinto :create "Feed.Release.Chrome";
         stop;
     }
 
     # rule:[ClamAV]
     # https://www.clamav.net/
     if header :is "X-RSS-Feed" "http://blog.clamav.net/" {
-        fileinto :create "INBOX/Feed/Release/ClamAV";
+        fileinto :create "Feed.Release.ClamAV";
         stop;
     }
 
     # rule:[Podman]
     # https://www.drupal.org/security
     if header :is "X-RSS-Feed" "https://github.com/containers/podman/releases" {
-        fileinto :create "INBOX/Feed/Release/Podman";
+        fileinto :create "Feed.Release.Podman";
         stop;
     }
 
     # rule:[SUSE userscripts]
     # https://gitlab.suse.de/gsonnu/userscripts
     if header :is "X-RSS-Feed" "https://gitlab.suse.de/gsonnu/userscripts" {
-        fileinto :create "INBOX/Feed/Release/SUSE/Userscripts";
+        fileinto :create "Feed.Release.SUSE.Userscripts";
         stop;
     }
 
     # rule:[SUSE secbox]
     # https://github.com/StayPirate/secbox
     if header :is "X-RSS-Feed" "https://github.com/StayPirate/secbox/releases" {
-        fileinto :create "INBOX/Feed/Release/SUSE/Secbox";
+        fileinto :create "Feed.Release.SUSE.Secbox";
         stop;
     }
 
@@ -539,7 +539,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[intel ucode]
     # https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
     if header :is "X-RSS-Feed" "https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/releases" {
-        fileinto :create "INBOX/Feed/Release/ucode/Intel";
+        fileinto :create "Feed.Release.ucode.Intel";
         stop;
     }
 
@@ -547,14 +547,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://github.com/keepassxreboot/keepassxc/releases
     # https://keepassxc.org/blog/
     if header :is "X-RSS-Feed" "https://github.com/keepassxreboot/keepassxc/releases" {
-        fileinto :create "INBOX/Feed/Release/KeePassXC";
+        fileinto :create "Feed.Release.KeePassXC";
         stop;
     }
 
     # rule:[Unifi Controller]
     # https://community.ui.com/rss/releases/UniFi-Network-Application/e6712595-81bb-4829-8e42-9e2630fabcfe
     if header :is "X-RSS-Feed" "https://community.ui.com" {
-        fileinto :create "INBOX/Feed/Release/Unifi Controller";
+        fileinto :create "Feed.Release.Unifi Controller";
         stop;
     }
 
@@ -565,7 +565,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         if allof(     header :contains "Subject" "iOS",
                   not header :contains "Subject" "beta",
                   not header :contains "Subject" "RC" ) {
-            fileinto :create "INBOX/Feed/Release/Apple";
+            fileinto :create "Feed.Release.Apple";
             stop;
         }
     }
@@ -594,7 +594,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://archlinux.org/news/
     # It handles the same content of arch-announce ML
     if header :is "X-RSS-Feed" "https://archlinux.org/news/" {
-        fileinto :create "INBOX/Feed/News/Archlinux";
+        fileinto :create "Feed.News.Archlinux";
         stop;
     }
 
@@ -624,6 +624,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     #_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
 
     #discard;
-    fileinto :create "INBOX/Feed/Trash";
+    fileinto :create "Feed.Trash";
 
 }
