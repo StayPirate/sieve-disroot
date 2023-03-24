@@ -82,6 +82,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Ubuntu Security
 # │   ├── Security Nation
 # │   ├── Darknet Diaries
+# │   ├── Thundebird
 # │   └── Dayzerosec
 # └── Trash
 
@@ -630,6 +631,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://rapid7.com/resources/podcasts
     if header :is "X-RSS-Feed" "https://rapid7.com/resources/podcasts" {
         fileinto :create "Feed.Podcast.Security Nation";
+        stop;
+    }
+
+    # rule:[Thundebird Podacast]
+    # https://blog.thunderbird.net/2023/03/thundercast-1-origin-stories/
+    if header :is "X-RSS-Feed" "https://thunderbird.net" {
+        fileinto :create "Feed.Podcast.Thundebird";
         stop;
     }
 
