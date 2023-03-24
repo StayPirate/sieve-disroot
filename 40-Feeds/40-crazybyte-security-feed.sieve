@@ -10,13 +10,11 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #
 # Feed
 # ├── Weekly update
-# │   ├── Ubuntu sec podcast
 # │   ├── SSD
 # │   ├── LWN
 # │   └── AT&T
 # ├── Blog
 # │   ├── TOR
-# │   ├── Darknet Diaries
 # │   ├── Mozilla
 # │   ├── Thunderbird
 # │   ├── Github
@@ -29,7 +27,6 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Sentinelone
 # │   ├── Intezer
 # │   ├── Avast
-# │   ├── Security Nation
 # │   ├── Good Reads
 # │   ├── Activism
 # │   └── Guerredirete
@@ -81,6 +78,11 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   └── Linux Foundation
 # ├── News
 # │   └── Archlinux
+# ├── Podcast
+# │   ├── Ubuntu Security
+# │   ├── Security Nation
+# │   ├── Darknet Diaries
+# │   └── Dayzerosec
 # └── Trash
 
 if header :is "X-RSS-Instance" "crazybyte-security-feed" {
@@ -101,13 +103,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 #   ╚███╔███╔╝███████╗███████╗██║  ██╗███████╗██║       ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗
 #    ╚══╝╚══╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝        ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
 
-    # rule:[Ubuntu security podcast]
-    # https://ubuntusecuritypodcast.org
-    if header :is "X-RSS-Feed" "https://ubuntusecuritypodcast.org/" {
-        fileinto :create "Feed.Weekly update.Ubuntu sec podcast";
-        stop;
-    }
-
     # rule:[SSD Secure Disclosure]
     # https://www.youtube.com/channel/UC9ZnYbYqOe6Y3eRdw0TMz9Q
     if header :is "X-RSS-Feed" "https://www.youtube.com/channel/UC9ZnYbYqOe6Y3eRdw0TMz9Q" {
@@ -119,13 +114,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.youtube.com/channel/UCnpDurxReTSpFs5-AhDo8Kg
     if header :is "X-RSS-Feed" "https://www.youtube.com/channel/UCnpDurxReTSpFs5-AhDo8Kg" {
         fileinto :create "Feed.Weekly update.AT&T";
-        stop;
-    }
-
-    # rule:[Dayzerosec Podcast]
-    # https://dayzerosec.com/podcast/
-    if header :is "X-RSS-Feed" "https://dayzerosec.com/" {
-        fileinto :create "Feed.Weekly update.Dayzerosec";
         stop;
     }
 
@@ -187,13 +175,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://blog.mozilla.org/security
     if header :is "X-RSS-Feed" "https://blog.mozilla.org/security" {
         fileinto :create "Feed.Blog.Mozilla";
-        stop;
-    }
-
-    # rule:[Darknet Diaries Podcast]
-    # https://darknetdiaries.com/
-    if header :is "X-RSS-Feed" "https://darknetdiaries.com/" {
-        fileinto :create "Feed.Blog.Darknet Diaries";
         stop;
     }
 
@@ -311,13 +292,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://decoded.avast.io/
     if header :is "X-RSS-Feed" "https://decoded.avast.io" {
         fileinto :create "Feed.Blog.Avast";
-        stop;
-    }
-
-    # rule:[Security Nation]
-    # https://rapid7.com/resources/podcasts
-    if header :is "X-RSS-Feed" "https://rapid7.com/resources/podcasts" {
-        fileinto :create "Feed.Blog.Security Nation";
         stop;
     }
 
@@ -613,6 +587,49 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
         redirect "${WORK_ADDR}";
         discard;
+        stop;
+    }
+
+#   ██████╗  ██████╗ ██████╗  ██████╗ █████╗ ███████╗████████╗
+#   ██╔══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝
+#   ██████╔╝██║   ██║██║  ██║██║     ███████║███████╗   ██║   
+#   ██╔═══╝ ██║   ██║██║  ██║██║     ██╔══██║╚════██║   ██║   
+#   ██║     ╚██████╔╝██████╔╝╚██████╗██║  ██║███████║   ██║   
+#   ╚═╝      ╚═════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
+
+    # rule:[Late Night Linux]
+    # Late Night Linux, Linux Downtime, and Linux After Dark
+    # https://latenightlinux.com
+    if header :contains "X-RSS-Feed" "https://latenightlinux.com" {
+        fileinto :create "Feed.Podcast.Late Night Linux";
+        stop;
+    }
+
+    # rule:[Ubuntu security podcast]
+    # https://ubuntusecuritypodcast.org
+    if header :is "X-RSS-Feed" "https://ubuntusecuritypodcast.org/" {
+        fileinto :create "Feed.Podcast.Ubuntu Security";
+        stop;
+    }
+
+    # rule:[Dayzerosec Podcast]
+    # https://dayzerosec.com/podcast/
+    if header :is "X-RSS-Feed" "https://dayzerosec.com/" {
+        fileinto :create "Feed.Podcast.Dayzerosec";
+        stop;
+    }
+
+    # rule:[Darknet Diaries Podcast]
+    # https://darknetdiaries.com/
+    if header :is "X-RSS-Feed" "https://darknetdiaries.com/" {
+        fileinto :create "Feed.Podcast.Darknet Diaries";
+        stop;
+    }
+
+    # rule:[Security Nation]
+    # https://rapid7.com/resources/podcasts
+    if header :is "X-RSS-Feed" "https://rapid7.com/resources/podcasts" {
+        fileinto :create "Feed.Podcast.Security Nation";
         stop;
     }
 
