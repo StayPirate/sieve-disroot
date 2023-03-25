@@ -632,7 +632,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Darknet Diaries Podcast]
     # https://darknetdiaries.com/
-    if header :is "X-RSS-Feed" "https://darknetdiaries.com/" {
+    if header :is "X-RSS-Feed" "https://open.spotify.com/show/4XPl3uEEL9hvqMkoZrzbx5" {
         fileinto :create "Feed.Podcast.Darknet Diaries";
         stop;
     }
