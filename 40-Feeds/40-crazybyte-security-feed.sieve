@@ -77,6 +77,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── CyberSaiyan
 # │   └── Linux Foundation
 # ├── News
+# │   ├── Crypto Scam
 # │   └── Archlinux
 # ├── Podcast
 # │   ├── Ubuntu Security
@@ -572,6 +573,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # It handles the same content of arch-announce ML
     if header :is "X-RSS-Feed" "https://archlinux.org/news/" {
         fileinto :create "Feed.News.Archlinux";
+        stop;
+    }
+
+    # rule:[web3isgoinggreat]
+    # https://web3isgoinggreat.com/
+    # Scams in the cryptocurrency world
+    if header :is "X-RSS-Feed" "https://web3isgoinggreat.com" {
+        fileinto :create "Feed.News.Crypto Scam";
         stop;
     }
 
