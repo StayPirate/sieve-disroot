@@ -154,7 +154,8 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Microsoft Security Blog]
     # https://www.microsoft.com/security/blog
-    if header :is "X-RSS-Feed" "https://www.microsoft.com/security/blog" {
+    if header :is "X-RSS-Feed" [ "https://www.microsoft.com/security/blog",
+                                 "https://www.microsoft.com/en-us/security/blog/" ] {
         fileinto :create "Feed.Blog.Microsoft";
         stop;
     }
@@ -285,7 +286,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Intezer]
     # https://www.intezer.com/blog/
-    if header :is "X-RSS-Feed" "https://www.intezer.com" {
+    if header :contains "X-RSS-Feed" "https://www.intezer.com" {
         fileinto :create "Feed.Blog.Intezer";
         stop;
     }
