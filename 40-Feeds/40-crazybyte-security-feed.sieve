@@ -67,6 +67,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── ClamAV
 # │   ├── Chrome
 # │   ├── Unifi Controller
+# │   ├── Foot
 # │   ├── Apple
 # │   ├── SUSE
 # │   │   ├── Secbox
@@ -547,6 +548,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
             fileinto :create "Feed.Release.Apple";
             stop;
         }
+    }
+
+    # rule:[foot]
+    # https://codeberg.org/dnkl/foot/releases
+    if header :is "X-RSS-Feed" "https://codeberg.org/dnkl/foot/releases" {
+        fileinto :create "Feed.Release.Foot";
+        stop;
     }
 
 #   ███╗   ██╗███████╗██╗    ██╗███████╗    ██╗     ███████╗████████╗████████╗███████╗██████╗ 
