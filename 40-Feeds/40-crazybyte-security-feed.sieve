@@ -49,6 +49,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   │   ├── Archlinux
 # │   │   └── Oracle
 # │   ├── Github
+# │   ├── Mozilla
 # │   ├── PowerDNS
 # │   ├── Rust
 # │   ├── Drupal
@@ -464,6 +465,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     if allof( header :contains "X-RSS-Feed" "http://www.videolan.org/",
               body :contains [ "security", "affected" ] ) {
         fileinto :create "Feed.SA.VLC";
+        stop;
+    }
+
+    # rule:[Mozilla]
+    # Mozilla SA (Firefox and Thunderbird)
+    # https://www.mozilla.org/en-US/security/advisories/
+    if header :is "X-RSS-Feed" "https://www.mozilla.org/en-US/security/advisories/" {
+        fileinto :create "Feed.SA.Mozilla";
         stop;
     }
 
