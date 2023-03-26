@@ -79,6 +79,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   └── Linux Foundation
 # ├── News
 # │   ├── Crypto Scam
+# │   ├── Breaches
 # │   └── Archlinux
 # ├── Podcast
 # │   ├── Ubuntu Security
@@ -590,6 +591,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # Scams in the cryptocurrency world
     if header :is "X-RSS-Feed" "https://web3isgoinggreat.com" {
         fileinto :create "Feed.News.Crypto Scam";
+        stop;
+    }
+
+    # rule:[breaches from HIBP]
+    # https://haveibeenpwned.com/
+    # Scams in the cryptocurrency world
+    if header :is "X-RSS-Feed" "https://haveibeenpwned.com" {
+        fileinto :create "Feed.News.Breaches";
         stop;
     }
 
