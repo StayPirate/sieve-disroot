@@ -85,7 +85,6 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   └── Archlinux
 # ├── Podcast
 # │   ├── Ubuntu Security
-# │   ├── Security Nation
 # │   ├── Darknet Diaries
 # │   ├── Thundebird
 # │   └── Dayzerosec
@@ -669,13 +668,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://darknetdiaries.com/
     if header :is "X-RSS-Feed" "https://open.spotify.com/show/4XPl3uEEL9hvqMkoZrzbx5" {
         fileinto :create "Feed.Podcast.Darknet Diaries";
-        stop;
-    }
-
-    # rule:[Security Nation]
-    # https://rapid7.com/resources/podcasts
-    if header :is "X-RSS-Feed" "https://rapid7.com/resources/podcasts" {
-        fileinto :create "Feed.Podcast.Security Nation";
         stop;
     }
 
