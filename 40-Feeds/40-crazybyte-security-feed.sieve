@@ -50,6 +50,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   │   └── Oracle
 # │   ├── Github
 # │   ├── Mozilla
+# │   ├── OpenWRT
 # │   ├── PowerDNS
 # │   ├── Rust
 # │   ├── Drupal
@@ -473,6 +474,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.mozilla.org/en-US/security/advisories/
     if header :is "X-RSS-Feed" "https://www.mozilla.org/en-US/security/advisories/" {
         fileinto :create "Feed.SA.Mozilla";
+        stop;
+    }
+
+    # rule:[OpenWRT]
+    # OpenWRT SA
+    # https://openwrt.org/advisory/start
+    if header :contains "X-RSS-Feed" "https://openwrt.org/advisory" {
+        fileinto :create "Feed.SA.OpenWRT";
         stop;
     }
 
