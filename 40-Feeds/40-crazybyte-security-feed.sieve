@@ -221,8 +221,9 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Cryptography Dispatches]
     # Cryptography Dispatches by Filippo Valsorda (AKA FiloSottile)
-    # https://buttondown.email/cryptography-dispatches
-    if header :is "X-RSS-Feed" "https://buttondown.email/cryptography-dispatches" {
+    # old blog: https://buttondown.email/cryptography-dispatches
+    # new blog: https://words.filippo.io
+    if header :is "X-RSS-Feed" "https://words.filippo.io/" {
         fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
