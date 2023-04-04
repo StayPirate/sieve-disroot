@@ -84,13 +84,12 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Crypto Scam
 # │   ├── Breaches
 # │   └── Archlinux
-# ├── Podcast
-# │   ├── Ubuntu Security
-# │   ├── Darknet Diaries
-# │   ├── Thundebird
-# │   ├── Fossified
-# │   └── Dayzerosec
-# └── Trash
+# └── Podcast
+#     ├── Ubuntu Security
+#     ├── Darknet Diaries
+#     ├── Thundebird
+#     ├── Fossified
+#     └── Dayzerosec
 
 if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
@@ -704,13 +703,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 #   ╚██████╔╝   ██║   ██║  ██║███████╗██║  ██║
 #    ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 
-    #_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
-    #                                                       #
-    #   If no rule matched the notification is discarded.   #
-    #                                                       #
-    #_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
+    #_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
+    #                                                                       #
+    #   If the notification hasn't matched any rule then move it to Trash   #
+    #                                                                       #
+    #_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
 
     #discard;
-    fileinto :create "Feed.Trash";
+    fileinto :create "Trash";
 
 }
