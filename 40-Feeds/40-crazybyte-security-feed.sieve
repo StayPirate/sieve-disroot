@@ -332,6 +332,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Daniel Stenberg]
+    # https://daniel.haxx.se/blog/
+    if allof( header :contains "X-RSS-Feed" "https://daniel.haxx.se/blog",
+              header :contains "Keywords" "Security") {
+        fileinto :create "Feed.Blog.Curl";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
