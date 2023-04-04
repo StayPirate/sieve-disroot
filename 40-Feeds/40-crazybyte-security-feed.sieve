@@ -88,6 +88,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Ubuntu Security
 # │   ├── Darknet Diaries
 # │   ├── Thundebird
+# │   ├── Fossified
 # │   └── Dayzerosec
 # └── Trash
 
@@ -685,6 +686,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://blog.thunderbird.net/2023/03/thundercast-1-origin-stories/
     if header :is "X-RSS-Feed" "https://thunderbird.net" {
         fileinto :create "Feed.Podcast.Thundebird";
+        stop;
+    }
+
+    # rule:[Fossified]
+    # https://pod.fossified.com/
+    # https://github.com/fossified/podcast
+    if header :contains "X-RSS-Feed" "https://pod.fossified.com" {
+        fileinto :create "Feed.Podcast.Fossified";
         stop;
     }
 
