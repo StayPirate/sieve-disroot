@@ -72,9 +72,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Unifi Controller
 # │   ├── Foot
 # │   ├── Apple
-# │   ├── SUSE
-# │   │   ├── Secbox
-# │   │   └── Userscripts
+# │   ├── SUSE Tools
 # │   └── ucode
 # │       └── Intel
 # ├── News Letter
@@ -538,14 +536,21 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[SUSE userscripts]
     # https://gitlab.suse.de/gsonnu/userscripts
     if header :is "X-RSS-Feed" "https://gitlab.suse.de/gsonnu/userscripts" {
-        fileinto :create "Feed.Release.SUSE.Userscripts";
+        fileinto :create "Feed.Release.SUSE Tools";
+        stop;
+    }
+
+    # rule:[SUSE imtools]
+    # https://gitlab.suse.de/security/imtools
+    if header :is "X-RSS-Feed" "https://gitlab.suse.de/security/imtools" {
+        fileinto :create "Feed.Release.SUSE Tools";
         stop;
     }
 
     # rule:[SUSE secbox]
     # https://github.com/StayPirate/secbox
     if header :is "X-RSS-Feed" "https://github.com/StayPirate/secbox/releases" {
-        fileinto :create "Feed.Release.SUSE.Secbox";
+        fileinto :create "Feed.Release.SUSE Tools";
         stop;
     }
 
