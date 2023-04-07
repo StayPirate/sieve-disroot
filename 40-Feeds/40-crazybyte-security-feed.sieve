@@ -87,6 +87,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #     ├── Darknet Diaries
 #     ├── Thundebird
 #     ├── Fossified
+#     ├── Open Source Security
 #     └── Dayzerosec
 
 if header :is "X-RSS-Instance" "crazybyte-security-feed" {
@@ -706,6 +707,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://github.com/fossified/podcast
     if header :contains "X-RSS-Feed" "https://pod.fossified.com" {
         fileinto :create "Feed.Podcast.Fossified";
+        stop;
+    }
+
+    # rule:[Open Source Security Podcast]
+    # https://opensourcesecurity.io/
+    if header :is "X-RSS-Feed" "http://opensourcesecuritypodcast.com" {
+        fileinto :create "Feed.Podcast.Open Source Security";
         stop;
     }
 
