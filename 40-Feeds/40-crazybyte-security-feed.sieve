@@ -340,6 +340,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Sekoia Blog]
+    # https://blog.sekoia.io/
+    if allof( header :contains "X-RSS-Feed" "https://blog.sekoia.io",
+              header :contains "Keywords" [ "Security", "Cybercrime", "Dark Web", "APT", "Malware", "CTI" ]) {
+        fileinto :create "Feed.Blog.Sekoia";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
