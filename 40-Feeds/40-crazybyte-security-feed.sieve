@@ -273,7 +273,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
                     # They use Cloudflare CDN which in turn redirects (302) to the italian
                     # blog (it.sentinelone.com) if the request comes from an italian IP.
                     # (╯°□°)╯︵ ┻━┻
-                    if header :contains "X-RSS-Feed" "https://it.sentinelone.com" { 
+                    if header :contains "X-RSS-Link" "https://it.sentinelone.com" { 
                         addflag "italian";
                     }
 
