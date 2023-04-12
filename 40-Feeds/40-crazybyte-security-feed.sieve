@@ -28,7 +28,8 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Intezer
 # │   ├── Avast
 # │   ├── Good Reads
-# │   ├── Activism
+# │   ├── Hacktivism
+# │   ├── Sekoia
 # │   ├── MiaMammaUsaLinux
 # │   └── Guerredirete
 # ├── Ezine
@@ -251,7 +252,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # Center for Transparency and Digital Human Rights
     # https://www.hermescenter.org/press/
     if header :is "X-RSS-Feed" "https://www.hermescenter.org" {
-        fileinto :create "Feed.Blog.Activism";
+        fileinto :create "Feed.Blog.Hacktivism";
         addflag "italian";
         stop;
     }
@@ -260,7 +261,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.copernicani.it
     if allof ( header :is "X-RSS-Feed" "https://www.copernicani.it",
                header :contains "Keywords" [ "cybersecurity", "cyberwarfare" ] ) {
-        fileinto :create "Feed.Blog.Activism";
+        fileinto :create "Feed.Blog.Hacktivism";
         addflag "italian";
         stop;
     }
