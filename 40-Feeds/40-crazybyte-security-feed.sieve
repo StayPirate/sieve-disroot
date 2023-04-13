@@ -198,16 +198,16 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[Guerre di rete]
     # https://guerredirete.substack.com
     if header :is "X-RSS-Feed" "https://guerredirete.substack.com" {
-        fileinto :create "Feed.Blog.Guerredirete";
         addflag "italian";
+        fileinto :create "Feed.Blog.Guerredirete";
         stop;
     }
 
     # rule:[MiaMammaUsaLinux]
     # https://www.miamammausalinux.org
     if header :is "X-RSS-Feed" "https://www.miamammausalinux.org" {
-        fileinto :create "Feed.Blog.MiaMammaUsaLinux";
         addflag "italian";
+        fileinto :create "Feed.Blog.MiaMammaUsaLinux";
         stop;
     }
 
