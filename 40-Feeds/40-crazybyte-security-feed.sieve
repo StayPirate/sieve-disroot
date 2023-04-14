@@ -70,6 +70,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── KeePassXC
 # │   ├── ClamAV
 # │   ├── Chrome
+# │   ├── Chromium
 # │   ├── Unifi Controller
 # │   ├── Foot
 # │   ├── Apple
@@ -91,7 +92,8 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #     ├── Open Source Security
 #     └── Dayzerosec
 
-if header :is "X-RSS-Instance" "crazybyte-security-feed" {
+if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
+          header :contains "Subject" "http://changedetection.home") {
 
     # rule:[convert X-RSS-Tags to IMAP-flags]
     # This rule takes the whole string in the header X-RSS-Tags and use it to set IMAP-flags.
@@ -526,6 +528,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
                header :contains "Keywords" "Desktop Update",
                header :contains "Keywords" "Stable updates" ) {
         fileinto :create "Feed.Release.Chrome";
+        stop;
+    }
+
+    # rule:[Chromium]
+    # https://chromiumdash.appspot.com/releases?platform=Linux
+    if header :contains "Subject" "http://changedetection.home - Chromium releases" {
+        fileinto :create "Feed.Release.Chromium";
         stop;
     }
 
