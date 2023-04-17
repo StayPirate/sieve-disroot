@@ -31,6 +31,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Hacktivism
 # │   ├── Sekoia
 # │   ├── Securelist
+# │   ├── Uptycs
 # │   ├── MiaMammaUsaLinux
 # │   └── Guerredirete
 # ├── Ezine
@@ -356,6 +357,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :contains "X-RSS-Feed" "https://securelist.com",
               header :contains "Keywords" [ "Malware", "Incidents", "Research" ]) {
         fileinto :create "Feed.Blog.Securelist";
+        stop;
+    }
+
+    # rule:[Uptycs]
+    # https://www.uptycs.com/blog
+    if allof( header :contains "X-RSS-Feed" "https://www.uptycs.com",
+              header :contains "Keywords" [ "Malware", "supply chain" ]) {
+        fileinto :create "Feed.Blog.Uptycs";
         stop;
     }
 
