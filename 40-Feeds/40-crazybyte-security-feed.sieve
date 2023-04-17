@@ -32,6 +32,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Sekoia
 # │   ├── Securelist
 # │   ├── Uptycs
+# │   ├── Citizen Lab
 # │   ├── MiaMammaUsaLinux
 # │   └── Guerredirete
 # ├── Ezine
@@ -365,6 +366,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :contains "X-RSS-Feed" "https://www.uptycs.com",
               header :contains "Keywords" [ "Malware", "supply chain" ]) {
         fileinto :create "Feed.Blog.Uptycs";
+        stop;
+    }
+
+    # rule:[Citizen Lab]
+    # https://citizenlab.ca/category/research/
+    if header :contains "X-RSS-Feed" "https://citizenlab.ca" {
+        fileinto :create "Feed.Blog.Citizen Lab";
         stop;
     }
 
