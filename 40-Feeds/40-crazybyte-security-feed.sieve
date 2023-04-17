@@ -30,6 +30,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Good Reads
 # │   ├── Hacktivism
 # │   ├── Sekoia
+# │   ├── Securelist
 # │   ├── MiaMammaUsaLinux
 # │   └── Guerredirete
 # ├── Ezine
@@ -347,6 +348,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :contains "X-RSS-Feed" "https://blog.sekoia.io",
               header :contains "Keywords" [ "Security", "Cybercrime", "Dark Web", "APT", "Malware", "CTI" ]) {
         fileinto :create "Feed.Blog.Sekoia";
+        stop;
+    }
+
+    # rule:[Kaspersky Securelist]
+    # https://securelist.com/
+    if allof( header :contains "X-RSS-Feed" "https://securelist.com",
+              header :contains "Keywords" [ "Malware", "Incidents", "Research" ]) {
+        fileinto :create "Feed.Blog.Securelist";
         stop;
     }
 
