@@ -94,6 +94,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #     ├── Thundebird
 #     ├── Fossified
 #     ├── Open Source Security
+#     ├── Mandiant
 #     └── Dayzerosec
 
 if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
@@ -773,6 +774,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://opensourcesecurity.io/
     if header :is "X-RSS-Feed" "http://opensourcesecuritypodcast.com" {
         fileinto :create "Feed.Podcast.Open Source Security";
+        stop;
+    }
+
+    # rule:[Mandiant - The Defender's Advantage Podcast]
+    # https://www.mandiant.com/resources/blog/podcast-threats-europe
+    if header :is "X-RSS-Feed" "https://feeds.buzzsprout.com/1762840" {
+        fileinto :create "Feed.Podcast.Mandiant";
         stop;
     }
 
