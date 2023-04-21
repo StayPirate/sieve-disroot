@@ -33,6 +33,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Securelist
 # │   ├── Uptycs
 # │   ├── Citizen Lab
+# │   ├── Mandiant
 # │   ├── MiaMammaUsaLinux
 # │   └── Guerredirete
 # ├── Ezine
@@ -380,6 +381,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://faultlore.com/blah/#articles
     if header :contains "X-RSS-Feed" "https://gankra.github.io/blah/" {
         fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
+    # rule:[Mandiant]
+    # https://www.mandiant.com/resources/blog
+    if header :contains "X-RSS-Feed" "https://www.mandiant.com" {
+        fileinto :create "Feed.Blog.Mandiant";
         stop;
     }
 
