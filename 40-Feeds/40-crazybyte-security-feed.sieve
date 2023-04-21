@@ -786,7 +786,7 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
 
     # rule:[Mandiant - The Defender's Advantage Podcast]
     # https://www.mandiant.com/resources/blog/podcast-threats-europe
-    if header :is "X-RSS-Feed" "http://rss-bridge-proxy.home/spotify/show/7CFsvR9lOLZiNoVDUltL9X" {
+    if header :is "X-RSS-Feed" "https://open.spotify.com/show/7CFsvR9lOLZiNoVDUltL9X" {
         fileinto :create "Feed.Podcast.Mandiant";
         stop;
     }
