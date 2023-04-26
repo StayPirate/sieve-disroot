@@ -79,6 +79,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Foot
 # │   ├── Apple
 # │   ├── SUSE Tools
+# │   ├── Thunderbird
 # │   └── ucode
 # │       └── Intel
 # ├── News Letter
@@ -663,6 +664,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://codeberg.org/dnkl/foot/releases
     if header :is "X-RSS-Feed" "https://codeberg.org/dnkl/foot/releases" {
         fileinto :create "Feed.Release.Foot";
+        stop;
+    }
+
+    # rule:[Thunderbird]
+    # https://www.thunderbird.net/en-US/thunderbird/releases
+    if header :contains "Subject" "http://changedetection.home - Thunderbird" {
+        fileinto :create "Feed.Release.Thunderbird";
         stop;
     }
 
