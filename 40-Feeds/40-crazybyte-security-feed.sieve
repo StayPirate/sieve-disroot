@@ -70,6 +70,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── TOR
 # │   ├── VLC
 # │   ├── Curl
+# │   ├── Android
 # │   └── GCP
 # ├── Release
 # │   ├── Podman
@@ -581,6 +582,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://curl.se/docs/security.html
     if header :contains "Subject" "http://changedetection.home - Curl" {
         fileinto :create "Feed.SA.Curl";
+        stop;
+    }
+
+    # rule:[Android Security Bulletin]
+    # https://source.android.com/docs/security/bulletin/asb-overview
+    if header :contains "Subject" "http://changedetection.home - Android Security Bulletin" {
+        fileinto :create "Feed.SA.Android";
         stop;
     }
 
