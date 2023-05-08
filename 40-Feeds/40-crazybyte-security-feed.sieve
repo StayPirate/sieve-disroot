@@ -24,6 +24,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Google
 # │   ├── Project Zero
 # │   ├── Cloudflare
+# │   ├── Curl
 # │   ├── Sentinelone
 # │   ├── Intezer
 # │   ├── Avast
