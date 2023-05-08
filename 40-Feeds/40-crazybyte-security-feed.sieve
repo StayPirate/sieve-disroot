@@ -147,7 +147,7 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # rule:[Chromium Blog (security)]
     # http://blog.chromium.org
     if allof ( header :contains "X-RSS-Feed" "blog.chromium.org",
-               header :contains "Keywords" "security" ) {
+               header :contains "Keywords" [ "security", "HTTPS" ] ) {
         fileinto :create "Feed.Blog.Chromium";
         stop;
     }
