@@ -69,6 +69,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Weechat
 # │   ├── TOR
 # │   ├── VLC
+# │   ├── Curl
 # │   └── GCP
 # ├── Release
 # │   ├── Podman
@@ -575,6 +576,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
 
     # OpenJDK Vulnerability Advisory are fetched from the vuln-announce ML.
     # https://mail.openjdk.org/mailman/listinfo/vuln-announce
+
+    # rule:[Curl]
+    # https://curl.se/docs/security.html
+    if header :contains "Subject" "http://changedetection.home - Curl" {
+        fileinto :create "Feed.SA.Curl";
+        stop;
+    }
 
 #   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
 #   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
