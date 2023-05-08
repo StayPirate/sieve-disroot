@@ -402,7 +402,10 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
 
     # rule:[Scott Helme]
     # https://scotthelme.co.uk/
-    if header :contains "X-RSS-Feed" "https://scotthelme.co.uk/" {
+    # Ignore any blog post related to his product "Report URI"
+    if allof ( header :contains "X-RSS-Feed" "https://scotthelme.co.uk/",
+               not header :is "Keywords" "Report URI",
+               not header :contains "Subject" "Report URI" ) {
         fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
