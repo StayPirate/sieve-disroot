@@ -99,6 +99,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #     ├── Fossified
 #     ├── Open Source Security
 #     ├── Mandiant
+#     ├── Naked Security
 #     └── Dayzerosec
 
 if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
@@ -837,6 +838,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://www.mandiant.com/resources/blog/podcast-threats-europe
     if header :is "X-RSS-Feed" "https://open.spotify.com/show/7CFsvR9lOLZiNoVDUltL9X" {
         fileinto :create "Feed.Podcast.Mandiant";
+        stop;
+    }
+
+    # rule:[Naked Security from Sophos]
+    # https://nakedsecurity.sophos.com/podcast/
+    if header :is "X-RSS-Feed" "https://open.spotify.com/show/4AhwI3oHRgqO4v4Q5ZGaq9" {
+        fileinto :create "Feed.Podcast.Naked Security";
         stop;
     }
 
