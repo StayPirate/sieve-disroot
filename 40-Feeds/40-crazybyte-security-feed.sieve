@@ -616,6 +616,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[SUSE secbox-image]
+    # https://gitlab.suse.de/security/secbox-image
+    if header :is "X-RSS-Feed" "https://gitlab.suse.de/security/secbox-image" {
+        fileinto :create "Feed.Release.SUSE Tools";
+        stop;
+    }
+
     # rule:[SUSE secbox]
     # https://github.com/StayPirate/secbox
     if header :is "X-RSS-Feed" "https://github.com/StayPirate/secbox/releases" {
