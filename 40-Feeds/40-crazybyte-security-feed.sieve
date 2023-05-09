@@ -91,6 +91,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # ├── News
 # │   ├── Crypto Scam
 # │   ├── Breaches
+# │   ├── FOSS
 # │   └── Archlinux
 # └── Podcast
 #     ├── Ubuntu Security
@@ -757,6 +758,15 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # Scams in the cryptocurrency world
     if header :is "X-RSS-Feed" "https://haveibeenpwned.com" {
         fileinto :create "Feed.News.Breaches";
+        stop;
+    }
+
+    # rule:[Linuxiac]
+    # https://linuxiac.com/
+    # Linuxiac is an independent media platform dedicated to publishing the latest news from the Linux
+    # world and Open Source software.
+    if header :contains "X-RSS-Feed" "https://linuxiac.com" {
+        fileinto :create "Feed.News.FOSS";
         stop;
     }
 
