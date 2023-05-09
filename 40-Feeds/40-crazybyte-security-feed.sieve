@@ -93,6 +93,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Crypto Scam
 # │   ├── Breaches
 # │   ├── FOSS
+# │   ├── Devclass
 # │   └── Archlinux
 # └── Podcast
 #     ├── Ubuntu Security
@@ -783,6 +784,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :contains "X-RSS-Feed" "https://devops.com",
               header :contains "Keywords" [ "security", "sbom", "supply chain", "git", "linux", "2fa", "authentication", "mfa" ] ) {
         fileinto :create "Feed.News.FOSS";
+        stop;
+    }
+
+    # rule:[Devclass]
+    # https://devclass.com - Filter only security related posts
+    if allof( header :contains "X-RSS-Feed" "https://devclass.com",
+              header :contains "Keywords" "security" ) {
+        fileinto :create "Feed.News.Devclass";
         stop;
     }
 
