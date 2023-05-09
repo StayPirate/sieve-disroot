@@ -36,6 +36,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Citizen Lab
 # │   ├── Mandiant
 # │   ├── MiaMammaUsaLinux
+# │   ├── Memorysafety
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -419,6 +420,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://blog.brixit.nl
     if header :contains "X-RSS-Feed" "https://blog.brixit.nl" {
         fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
+    # rule:[Memorysafety]
+    # https://www.memorysafety.org
+    if header :contains "X-RSS-Feed" "https://www.memorysafety.org" {
+        fileinto :create "Feed.Blog.Memorysafety";
         stop;
     }
 
