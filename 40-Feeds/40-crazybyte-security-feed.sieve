@@ -770,6 +770,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[devops.com]
+    # https://devops.com/
+    if allof( header :contains "X-RSS-Feed" "https://devops.com",
+              header :contains "Keywords" [ "security", "sbom", "supply chain", "git", "linux", "2fa", "authentication", "mfa" ] ) {
+        fileinto :create "Feed.News.FOSS";
+        stop;
+    }
+
 #   ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
 #   ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
 #   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ 
