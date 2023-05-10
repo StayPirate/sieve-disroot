@@ -94,6 +94,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Breaches
 # │   ├── FOSS
 # │   ├── Devclass
+# │   ├── Phoronix
 # │   └── Archlinux
 # └── Podcast
 #     ├── Ubuntu Security
@@ -792,6 +793,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :contains "X-RSS-Feed" "https://devclass.com",
               header :contains "Keywords" "security" ) {
         fileinto :create "Feed.News.Devclass";
+        stop;
+    }
+
+    # rule:[Phoronix]
+    # https://www.phoronix.com
+    if header :contains "X-RSS-Feed" "https://www.phoronix.com" {
+        fileinto :create "Feed.News.Phoronix";
         stop;
     }
 
