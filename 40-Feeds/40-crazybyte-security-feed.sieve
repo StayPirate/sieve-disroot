@@ -37,6 +37,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Mandiant
 # │   ├── MiaMammaUsaLinux
 # │   ├── Memorysafety
+# │   ├── ELK Security Labs
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -429,6 +430,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://www.memorysafety.org
     if header :contains "X-RSS-Feed" "https://www.memorysafety.org" {
         fileinto :create "Feed.Blog.Memorysafety";
+        stop;
+    }
+
+    # rule:[Elastic - Security Labs]
+    # https://www.elastic.co/security-labs/
+    if header :contains "X-RSS-Feed" "https://www.elastic.co/security-labs" {
+        fileinto :create "Feed.Blog.ELK Security Labs";
         stop;
     }
 
