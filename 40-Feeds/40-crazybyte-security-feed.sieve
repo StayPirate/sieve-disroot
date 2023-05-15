@@ -39,6 +39,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Memorysafety
 # │   ├── ELK Security Labs
 # │   ├── Aquasec
+# │   ├── Symantec
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -447,6 +448,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
               not header :regex "Keywords" [ ".*aqua.*", ".*Aqua.*" ],
               not header :contains "Subject" "aqua" ) {
         fileinto :create "Feed.Blog.Aquasec";
+        stop;
+    }
+
+    # rule:[Symantec Security]
+    # https://symantec-enterprise-blogs.security.com/blogs/
+    if header :contains "X-RSS-Feed" "https://sed-cms.broadcom.com" {
+        fileinto :create "Feed.Blog.Symantec";
         stop;
     }
 
