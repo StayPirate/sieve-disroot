@@ -1,4 +1,4 @@
-require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include", "imap4flags", "body" ];
+require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include", "imap4flags", "body", "regex" ];
 
 set "WORK_ADDR" "ggabrielli@suse.de";
 
@@ -38,6 +38,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── MiaMammaUsaLinux
 # │   ├── Memorysafety
 # │   ├── ELK Security Labs
+# │   ├── Aquasec
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -437,6 +438,15 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://www.elastic.co/security-labs/
     if header :contains "X-RSS-Feed" "https://www.elastic.co/security-labs" {
         fileinto :create "Feed.Blog.ELK Security Labs";
+        stop;
+    }
+
+    # rule:[Aqua Security]
+    # https://blog.aquasec.com
+    if allof( header :contains "X-RSS-Feed" "https://blog.aquasec.com",
+              not header :regex "Keywords" [ ".*aqua.*", ".*Aqua.*" ],
+              not header :contains "Subject" "aqua" ) {
+        fileinto :create "Feed.Blog.Aquasec";
         stop;
     }
 
