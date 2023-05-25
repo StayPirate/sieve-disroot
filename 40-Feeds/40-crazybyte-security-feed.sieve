@@ -459,6 +459,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[Jared Candelaria]
+    # https://calabi-yau.space/blog/
+    if header :contains "X-RSS-Feed" "https://calabi-yau.space" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
