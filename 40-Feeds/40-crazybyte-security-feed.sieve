@@ -87,6 +87,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Apple
 # │   ├── SUSE Tools
 # │   ├── Thunderbird
+# │   ├── Wireshark
 # │   └── ucode
 # │       └── Intel
 # ├── News Letter
@@ -750,6 +751,15 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://www.thunderbird.net/en-US/thunderbird/releases
     if header :contains "Subject" "http://changedetection.home - Thunderbird" {
         fileinto :create "Feed.Release.Thunderbird";
+        stop;
+    }
+
+    # rule:[Wireshark]
+    # https://www.wireshark.org/docs/relnotes
+    # https://gitlab.com/wireshark/wireshark/-/tags
+    if allof( header :contains "X-RSS-Feed" "https://gitlab.com/wireshark/wireshark",
+              header :contains "Subject" "wireshark-" ) {
+        fileinto :create "Feed.Release.Wireshark";
         stop;
     }
 
