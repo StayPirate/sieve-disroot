@@ -40,6 +40,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── ELK Security Labs
 # │   ├── Aquasec
 # │   ├── Symantec
+# │   ├── Thalium
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -477,6 +478,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # http://blog.pi3.com.pl
     if header :contains "X-RSS-Feed" "http://blog.pi3.com.pl" {
         fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
+    # rule:[Thalium]
+    # https://blog.thalium.re/
+    if header :contains "X-RSS-Feed" "https://blog.thalium.re" {
+        fileinto :create "Feed.Blog.Thalium";
         stop;
     }
 
