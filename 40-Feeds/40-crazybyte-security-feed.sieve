@@ -466,6 +466,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[Axel -0vercl0k- Souchet]
+    # https://doar-e.github.io
+    if header :contains "X-RSS-Feed" "https://doar-e.github.io" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
