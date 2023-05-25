@@ -488,6 +488,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[James Forshaw]
+    # James (tiraniddo) Forshaw - Google Project Zero
+    # https://www.tiraniddo.dev/
+    if header :contains "X-RSS-Feed" "https://www.tiraniddo.dev" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
