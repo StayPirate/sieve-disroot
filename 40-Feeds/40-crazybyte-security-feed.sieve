@@ -109,6 +109,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #     ├── Open Source Security
 #     ├── Mandiant
 #     ├── Naked Security
+#     ├── Security Now
 #     └── Dayzerosec
 
 if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
@@ -968,6 +969,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://nakedsecurity.sophos.com/podcast/
     if header :is "X-RSS-Feed" "https://open.spotify.com/show/4AhwI3oHRgqO4v4Q5ZGaq9" {
         fileinto :create "Feed.Podcast.Naked Security";
+        stop;
+    }
+
+    # rule:[Security Now]
+    # https://twit.tv/shows/security-now
+    if header :is "X-RSS-Feed" "https://twit.tv/shows/security-now" {
+        fileinto :create "Feed.Podcast.Security Now";
         stop;
     }
 
