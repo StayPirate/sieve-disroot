@@ -76,6 +76,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── VLC
 # │   ├── Curl
 # │   ├── Android
+# │   ├── Gitlab
 # │   └── GCP
 # ├── Release
 # │   ├── Podman
@@ -680,6 +681,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://source.android.com/docs/security/bulletin/asb-overview
     if header :contains "Subject" "http://changedetection.home - Android Security Bulletin" {
         fileinto :create "Feed.SA.Android";
+        stop;
+    }
+
+    # rule:[Gitlab Security Releases]
+    # https://about.gitlab.com/releases/categories/releases/
+    if header :contains "X-RSS-Feed" "https://about.gitlab.com/releases/categories/releases/" {
+        fileinto :create "Feed.SA.Gitlab";
         stop;
     }
 
