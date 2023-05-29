@@ -41,6 +41,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Aquasec
 # │   ├── Symantec
 # │   ├── Thalium
+# │   ├── jpcert
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -504,6 +505,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         fileinto :create "Feed.Blog.Good Reads";
         stop;
     }
+
+    # rule:[JPCERT Coordination Center official Blog]
+    # https://blogs.jpcert.or.jp/en/
+    if header :contains "X-RSS-Feed" "https://blogs.jpcert.or.jp/en" {
+        fileinto :create "Feed.Blog.jpcert";
+        stop;
+    }
+
 
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
