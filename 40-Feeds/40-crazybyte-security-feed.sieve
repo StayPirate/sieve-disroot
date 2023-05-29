@@ -42,6 +42,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Symantec
 # │   ├── Thalium
 # │   ├── jpcert
+# │   ├── eset
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -513,6 +514,12 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[ESET]
+    # https://www.welivesecurity.com/research/
+    if header :contains "X-RSS-Feed" "https://www.welivesecurity.com" {
+        fileinto :create "Feed.Blog.eset";
+        stop;
+    }
 
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
