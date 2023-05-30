@@ -43,6 +43,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Thalium
 # │   ├── jpcert
 # │   ├── eset
+# │   ├── ZDI
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -79,6 +80,9 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Curl
 # │   ├── Android
 # │   ├── Gitlab
+# │   ├── ZDI
+# │   │   ├── Upcoming
+# │   │   └── Published
 # │   └── GCP
 # ├── Release
 # │   ├── Podman
@@ -521,6 +525,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
         stop;
     }
 
+    # rule:[ZDI Blog]
+    # https://www.zerodayinitiative.com/blog
+    if header :contains "X-RSS-Feed" "thezdi.com/blog" {
+        fileinto :create "Feed.Blog.ZDI";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
@@ -704,6 +715,20 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://about.gitlab.com/releases/categories/releases/
     if header :contains "X-RSS-Feed" "https://about.gitlab.com/releases/categories/releases/" {
         fileinto :create "Feed.SA.Gitlab";
+        stop;
+    }
+
+    # rule:[ZDI Upcoming SA]
+    # https://www.zerodayinitiative.com/advisories/upcoming/
+    if header :contains "X-RSS-Feed" "zerodayinitiative.com/advisories/upcoming" {
+        fileinto :create "Feed.SA.ZDI.Upcoming";
+        stop;
+    }
+
+    # rule:[ZDI Published SA]
+    # https://www.zerodayinitiative.com/advisories/published/
+    if header :contains "X-RSS-Feed" "zerodayinitiative.com/advisories/published" {
+        fileinto :create "Feed.SA.ZDI.Published";
         stop;
     }
 
