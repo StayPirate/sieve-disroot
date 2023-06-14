@@ -80,6 +80,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Curl
 # │   ├── Android
 # │   ├── Gitlab
+# │   ├── Shibboleth
 # │   ├── ZDI
 # │   │   ├── Upcoming
 # │   │   └── Published
@@ -729,6 +730,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://www.zerodayinitiative.com/advisories/published/
     if header :contains "X-RSS-Feed" "zerodayinitiative.com/advisories/published" {
         fileinto :create "Feed.SA.ZDI.Published";
+        stop;
+    }
+
+    # rule:[Shibboleth SA]
+    # https://shibboleth.net/community/advisories/
+    if header :contains "Subject" "http://changedetection.home - shibboleth-sp SA" {
+        fileinto :create "Feed.SA.Shibboleth";
         stop;
     }
 
