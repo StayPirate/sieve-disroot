@@ -97,6 +97,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── SUSE Tools
 # │   ├── Thunderbird
 # │   ├── Wireshark
+# │   ├── sniproxy
 # │   └── ucode
 # │       └── Intel
 # ├── News Letter
@@ -862,6 +863,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :contains "X-RSS-Feed" "https://gitlab.com/wireshark/wireshark",
               header :contains "Subject" "wireshark-" ) {
         fileinto :create "Feed.Release.Wireshark";
+        stop;
+    }
+
+    # rule:[SNIProxy]
+    # https://github.com/dlundquist/sniproxy
+    if header :contains "X-RSS-Feed" "https://github.com/dlundquist/sniproxy/releases" {
+        fileinto :create "Feed.Release.sniproxy";
         stop;
     }
 
