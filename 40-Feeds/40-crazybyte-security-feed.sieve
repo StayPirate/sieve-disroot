@@ -44,6 +44,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── jpcert
 # │   ├── eset
 # │   ├── ZDI
+# │   ├── ASEC
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -531,6 +532,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://www.zerodayinitiative.com/blog
     if header :contains "X-RSS-Feed" "thezdi.com/blog" {
         fileinto :create "Feed.Blog.ZDI";
+        stop;
+    }
+
+    # AhnLab Security Emergency Response Center (ASEC)
+    # https://asec.ahnlab.com/en/
+    if header :contains "X-RSS-Feed" "asec.ahnlab.com" {
+        fileinto :create "Feed.Blog.ASEC";
         stop;
     }
 
