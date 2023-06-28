@@ -45,6 +45,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── eset
 # │   ├── ZDI
 # │   ├── ASEC
+# │   ├── KeePassXC
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -539,6 +540,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://asec.ahnlab.com/en/
     if header :contains "X-RSS-Feed" "asec.ahnlab.com" {
         fileinto :create "Feed.Blog.ASEC";
+        stop;
+    }
+
+    # KPXC Blog
+    # https://keepassxc.org/blog/
+    if header :contains "X-RSS-Feed" "keepassxc.org/blog" {
+        fileinto :create "Feed.Blog.KeePassXC";
         stop;
     }
 
