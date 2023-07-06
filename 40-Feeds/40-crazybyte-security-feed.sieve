@@ -1063,7 +1063,8 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
 
     # rule:[the ReadME Podcast]
     # https://github.com/readme
-    if header :contains "X-RSS-Feed" "github.com/readme" {
+    if anyof( header :contains "X-RSS-Feed" "github.com/readme",
+              header :is "X-RSS-Feed" "https://open.spotify.com/show/660KitvdJDX2vUmioAbwSQ" ) {
         fileinto :create "Feed.Podcast.ReadME";
         stop;
     }
