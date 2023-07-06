@@ -121,6 +121,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 #     ├── Mandiant
 #     ├── Naked Security
 #     ├── Security Now
+#     ├── ReadME
 #     └── Dayzerosec
 
 if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
@@ -1057,6 +1058,13 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://twit.tv/shows/security-now
     if header :is "X-RSS-Feed" "https://twit.tv/shows/security-now" {
         fileinto :create "Feed.Podcast.Security Now";
+        stop;
+    }
+
+    # rule:[the ReadME Podcast]
+    # https://github.com/readme
+    if header :contains "X-RSS-Feed" "github.com/readme" {
+        fileinto :create "Feed.Podcast.ReadME";
         stop;
     }
 
