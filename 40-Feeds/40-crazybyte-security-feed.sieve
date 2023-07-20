@@ -83,6 +83,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Android
 # │   ├── Gitlab
 # │   ├── Shibboleth
+# │   ├── Dovecot
 # │   ├── ZDI
 # │   │   ├── Upcoming
 # │   │   └── Published
@@ -755,6 +756,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://shibboleth.net/community/advisories/
     if header :contains "Subject" "http://changedetection.home - shibboleth-sp SA" {
         fileinto :create "Feed.SA.Shibboleth";
+        stop;
+    }
+
+    # rule:[Dovecot SA]
+    # https://www.dovecot.org/security/
+    if allof( header :is "X-Application" "changedetection.io",
+              header :contains "Subject" "Dovecot SA" ) {
+        fileinto :create "Feed.SA.Dovecot";
         stop;
     }
 
