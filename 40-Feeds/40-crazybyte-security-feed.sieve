@@ -84,6 +84,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── Gitlab
 # │   ├── Shibboleth
 # │   ├── Dovecot
+# │   ├── Qualys
 # │   ├── ZDI
 # │   │   ├── Upcoming
 # │   │   └── Published
@@ -764,6 +765,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :is "X-Application" "changedetection.io",
               header :contains "Subject" "Dovecot SA" ) {
         fileinto :create "Feed.SA.Dovecot";
+        stop;
+    }
+
+    # rule:[Qualys SA]
+    # https://www.qualys.com/research/security-advisories/
+    if allof( header :is "X-Application" "changedetection.io",
+              header :contains "Subject" "Qualys SA" ) {
+        fileinto :create "Feed.SA.Qualys";
         stop;
     }
 
