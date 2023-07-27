@@ -87,6 +87,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # rule:[Gstreamer SA]
+    # https://gstreamer.freedesktop.org/security/
+    if header :contains "Subject" "Gstreamer SA" {
+        fileinto :create "Feed.SA.Gstreamer";
+        stop;
+    }
+
 #   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
 #   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
 #   ██████╔╝█████╗  ██║     █████╗  ███████║███████╗█████╗  
