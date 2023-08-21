@@ -1,0 +1,120 @@
+# Feed
+# ├── Weekly update
+# │   ├── SSD
+# │   ├── LWN
+# │   └── AT&T
+# ├── Blog
+# │   ├── TOR
+# │   ├── Mozilla
+# │   ├── Thunderbird
+# │   ├── Github
+# │   ├── Microsoft
+# │   ├── Chromium
+# │   ├── Chrome
+# │   ├── Google
+# │   ├── Project Zero
+# │   ├── Cloudflare
+# │   ├── Curl
+# │   ├── Sentinelone
+# │   ├── Intezer
+# │   ├── Avast
+# │   ├── Good Reads
+# │   ├── Hacktivism
+# │   ├── Sekoia
+# │   ├── Securelist
+# │   ├── Uptycs
+# │   ├── Citizen Lab
+# │   ├── Mandiant
+# │   ├── MiaMammaUsaLinux
+# │   ├── Memorysafety
+# │   ├── ELK Security Labs
+# │   ├── Aquasec
+# │   ├── Symantec
+# │   ├── Thalium
+# │   ├── jpcert
+# │   ├── eset
+# │   ├── ZDI
+# │   ├── ASEC
+# │   ├── KeePassXC
+# │   ├── NotSoSecure
+# │   └── Guerredirete
+# ├── Ezine
+# │   ├── AppSec
+# │   ├── POCorGTFO
+# │   └── Uninformed
+# ├── SA
+# │   ├── Distro
+# │   │   ├── Debian
+# │   │   ├── Ubuntu
+# │   │   ├── RedHat
+# │   │   ├── SUSE
+# │   │   │   ├── container
+# │   │   │   └── image
+# │   │   ├── openSUSE
+# │   │   ├── Gentoo
+# │   │   ├── Fedora
+# │   │   ├── Slackware
+# │   │   ├── Archlinux
+# │   │   └── Oracle
+# │   ├── Github
+# │   ├── Mozilla
+# │   ├── OpenWRT
+# │   ├── PowerDNS
+# │   ├── Rust
+# │   ├── Drupal
+# │   ├── Tomcat
+# │   ├── Jenkins
+# │   ├── Nmap
+# │   ├── Xen
+# │   ├── OpenJDK
+# │   ├── Weechat
+# │   ├── TOR
+# │   ├── VLC
+# │   ├── Curl
+# │   ├── Android
+# │   ├── Gitlab
+# │   ├── Shibboleth
+# │   ├── Dovecot
+# │   ├── Qualys
+# │   ├── ZDI
+# │   │   ├── Upcoming
+# │   │   └── Published
+# │   ├── AMD
+# │   ├── Postgresql
+# │   └── GCP
+# ├── Release
+# │   ├── Podman
+# │   ├── KeePassXC
+# │   ├── ClamAV
+# │   ├── Chrome
+# │   ├── Chromium
+# │   ├── Unifi Controller
+# │   ├── Foot
+# │   ├── Apple
+# │   ├── SUSE Tools
+# │   ├── Thunderbird
+# │   ├── Wireshark
+# │   ├── sniproxy
+# │   └── ucode
+# │       └── Intel
+# ├── News Letter
+# │   ├── CyberSaiyan
+# │   └── Linux Foundation
+# ├── News
+# │   ├── Crypto Scam
+# │   ├── Breaches
+# │   ├── FOSS
+# │   ├── Devclass
+# │   ├── Phoronix
+# │   └── Archlinux
+# └── Podcast
+#     ├── Ubuntu Security
+#     ├── Darknet Diaries
+#     ├── Thundebird
+#     ├── Fossified
+#     ├── Open Source Security
+#     ├── Mandiant
+#     ├── Naked Security
+#     ├── Security Now
+#     ├── ReadME
+#     └── Dayzerosec
