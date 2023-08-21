@@ -89,6 +89,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   │   ├── Upcoming
 # │   │   └── Published
 # │   ├── AMD
+# │   ├── Postgresql
 # │   └── GCP
 # ├── Release
 # │   ├── Podman
@@ -782,6 +783,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :is "X-Application" "changedetection.io",
               header :contains "Subject" "AMD SA" ) {
         fileinto :create "Feed.SA.AMD";
+        stop;
+    }
+
+    # rule:[Postgresql SA]
+    # https://www.postgresql.org/support/security/
+    if allof( header :is "X-Application" "changedetection.io",
+              header :contains "Subject" "Postgresql SA" ) {
+        fileinto :create "Feed.SA.Postgresql";
         stop;
     }
 
