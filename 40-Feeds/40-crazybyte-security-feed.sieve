@@ -46,6 +46,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── ZDI
 # │   ├── ASEC
 # │   ├── KeePassXC
+# │   ├── NotSoSecure
 # │   └── Guerredirete
 # ├── Ezine
 # │   ├── AppSec
@@ -552,6 +553,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     # https://keepassxc.org/blog/
     if header :contains "X-RSS-Feed" "keepassxc.org/blog" {
         fileinto :create "Feed.Blog.KeePassXC";
+        stop;
+    }
+
+    # NotSoSecure Blog
+    # https://notsosecure.com/technical
+    if allof( header :is "X-Application" "changedetection.io",
+              header :contains "Subject" "NotSoSecure" ) {
+        fileinto :create "Feed.Blog.NotSoSecure";
         stop;
     }
 
