@@ -9,10 +9,15 @@
 #   ███████║███████╗╚██████╗    ██║  ██║██████╔╝ ╚████╔╝ ██║███████║╚██████╔╝██║  ██║   ██║   
 #   ╚══════╝╚══════╝ ╚═════╝    ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝  
 
-    # Debian Security Advisories (DSA) are fetched from the debian-security-announce ML, since
-    # it provides much more detailed information compared to the DSA RSS-feed.
+    # rule:[Debian - security announce]
+    # Fetching Debian Security Advisories (DSA) from the debian-security-announce ML, bc
+    # it provides more detailed information compared to the DSA RSS-feed.
     # DSA ML:       https://lists.debian.org/debian-security-announce/
     # DSA RSS-feed: https://www.debian.org/security/dsa
+    if header :contains "List-Id" "<debian-security-announce.lists.debian.org>" {
+        fileinto :create "Feed.SA.Distro.Debian";
+        stop;
+    }
 
     # Ubuntu Security Notice (USN) are fetched from the ubuntu-security-announce ML.
     # USN:          https://lists.ubuntu.com/mailman/listinfo/ubuntu-security-announce
