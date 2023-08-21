@@ -88,6 +88,7 @@ set "WORK_ADDR" "ggabrielli@suse.de";
 # │   ├── ZDI
 # │   │   ├── Upcoming
 # │   │   └── Published
+# │   ├── AMD
 # │   └── GCP
 # ├── Release
 # │   ├── Podman
@@ -773,6 +774,14 @@ if anyof (header :is "X-RSS-Instance" "crazybyte-security-feed",
     if allof( header :is "X-Application" "changedetection.io",
               header :contains "Subject" "Qualys SA" ) {
         fileinto :create "Feed.SA.Qualys";
+        stop;
+    }
+
+    # rule:[AMD SA]
+    # https://www.amd.com/en/resources/product-security.html#security
+    if allof( header :is "X-Application" "changedetection.io",
+              header :contains "Subject" "AMD SA" ) {
+        fileinto :create "Feed.SA.AMD";
         stop;
     }
 
