@@ -1,120 +1,102 @@
-# Feed
-# ├── Weekly update
-# │   ├── SSD
-# │   ├── LWN
-# │   └── AT&T
-# ├── Blog
-# │   ├── TOR
-# │   ├── Mozilla
-# │   ├── Thunderbird
-# │   ├── Github
-# │   ├── Microsoft
-# │   ├── Chromium
-# │   ├── Chrome
-# │   ├── Google
-# │   ├── Project Zero
-# │   ├── Cloudflare
-# │   ├── Curl
-# │   ├── Sentinelone
-# │   ├── Intezer
-# │   ├── Avast
-# │   ├── Good Reads
-# │   ├── Hacktivism
-# │   ├── Sekoia
-# │   ├── Securelist
-# │   ├── Uptycs
-# │   ├── Citizen Lab
-# │   ├── Mandiant
-# │   ├── MiaMammaUsaLinux
-# │   ├── Memorysafety
-# │   ├── ELK Security Labs
-# │   ├── Aquasec
-# │   ├── Symantec
-# │   ├── Thalium
-# │   ├── jpcert
-# │   ├── eset
-# │   ├── ZDI
-# │   ├── ASEC
-# │   ├── KeePassXC
-# │   ├── NotSoSecure
-# │   └── Guerredirete
-# ├── Ezine
-# │   ├── AppSec
-# │   ├── POCorGTFO
-# │   └── Uninformed
-# ├── SA
-# │   ├── Distro
-# │   │   ├── Debian
-# │   │   ├── Ubuntu
-# │   │   ├── RedHat
-# │   │   ├── SUSE
-# │   │   │   ├── container
-# │   │   │   └── image
-# │   │   ├── openSUSE
-# │   │   ├── Gentoo
-# │   │   ├── Fedora
-# │   │   ├── Slackware
-# │   │   ├── Archlinux
-# │   │   └── Oracle
-# │   ├── Github
-# │   ├── Mozilla
-# │   ├── OpenWRT
-# │   ├── PowerDNS
-# │   ├── Rust
-# │   ├── Drupal
-# │   ├── Tomcat
-# │   ├── Jenkins
-# │   ├── Nmap
-# │   ├── Xen
-# │   ├── OpenJDK
-# │   ├── Weechat
-# │   ├── TOR
-# │   ├── VLC
-# │   ├── Curl
-# │   ├── Android
-# │   ├── Gitlab
-# │   ├── Shibboleth
-# │   ├── Dovecot
-# │   ├── Qualys
-# │   ├── ZDI
-# │   │   ├── Upcoming
-# │   │   └── Published
-# │   ├── AMD
-# │   ├── Postgresql
-# │   └── GCP
-# ├── Release
-# │   ├── Podman
-# │   ├── KeePassXC
-# │   ├── ClamAV
-# │   ├── Chrome
-# │   ├── Chromium
-# │   ├── Unifi Controller
-# │   ├── Foot
-# │   ├── Apple
-# │   ├── SUSE Tools
-# │   ├── Thunderbird
-# │   ├── Wireshark
-# │   ├── sniproxy
-# │   └── ucode
-# │       └── Intel
-# ├── News Letter
-# │   ├── CyberSaiyan
-# │   └── Linux Foundation
-# ├── News
-# │   ├── Crypto Scam
-# │   ├── Breaches
-# │   ├── FOSS
-# │   ├── Devclass
-# │   ├── Phoronix
-# │   └── Archlinux
-# └── Podcast
-#     ├── Ubuntu Security
-#     ├── Darknet Diaries
-#     ├── Thundebird
-#     ├── Fossified
-#     ├── Open Source Security
-#     ├── Mandiant
-#     ├── Naked Security
-#     ├── Security Now
-#     ├── ReadME
-#     └── Dayzerosec
+├── Feed
+│   ├── Blog
+│   │   ├── Aquasec
+│   │   ├── ASEC
+│   │   ├── Avast
+│   │   ├── Chrome
+│   │   ├── Chromium
+│   │   ├── Citizen Lab
+│   │   ├── Cloudflare
+│   │   ├── Curl
+│   │   ├── ELK Security Labs
+│   │   ├── eset
+│   │   ├── Github
+│   │   ├── Good Reads
+│   │   ├── Google
+│   │   ├── Guerredirete
+│   │   ├── Hacktivism
+│   │   ├── Intezer
+│   │   ├── jpcert
+│   │   ├── KeePassXC
+│   │   ├── Mandiant
+│   │   ├── Memorysafety
+│   │   ├── MiaMammaUsaLinux
+│   │   ├── Microsoft
+│   │   ├── Mozilla
+│   │   ├── NotSoSecure
+│   │   ├── Project Zero
+│   │   ├── Securelist
+│   │   ├── Sekoia
+│   │   ├── Sentinelone
+│   │   ├── Stackoverflow
+│   │   ├── Symantec
+│   │   ├── Thalium
+│   │   ├── Thunderbird
+│   │   ├── TOR
+│   │   ├── Uptycs
+│   │   └── ZDI
+│   ├── Ezine
+│   │   ├── AppSec
+│   │   ├── POCorGTFO
+│   │   └── Uninformed
+│   ├── News
+│   │   ├── Archlinux
+│   │   ├── Breaches
+│   │   ├── Crypto Scam
+│   │   ├── Devclass
+│   │   ├── FOSS
+│   │   └── Phoronix
+│   ├── Podcast
+│   │   ├── Darknet Diaries
+│   │   ├── Dayzerosec
+│   │   ├── Fossified
+│   │   ├── Late Night Linux
+│   │   ├── Mandiant
+│   │   ├── Naked Security
+│   │   ├── Open Source Security
+│   │   ├── ReadME
+│   │   ├── Security Now
+│   │   ├── Thundebird
+│   │   └── Ubuntu Security
+│   ├── Release
+│   │   ├── Apple
+│   │   ├── Chrome
+│   │   ├── Chromium
+│   │   ├── ClamAV
+│   │   ├── Foot
+│   │   ├── KeePassXC
+│   │   ├── Podman
+│   │   ├── sniproxy
+│   │   ├── SUSE Tools
+│   │   ├── Thunderbird
+│   │   ├── ucode
+│   │   │   └── Intel
+│   │   ├── Unifi Controller
+│   │   └── Wireshark
+│   ├── SA
+│   │   ├── AMD
+│   │   ├── Android
+│   │   ├── Curl
+│   │   ├── Distro
+│   │   │   └── Fedora
+│   │   ├── Dovecot
+│   │   ├── Drupal
+│   │   ├── GCP
+│   │   ├── Github
+│   │   ├── Gitlab
+│   │   ├── Mozilla
+│   │   ├── OpenWRT
+│   │   ├── Postgresql
+│   │   ├── PowerDNS
+│   │   ├── Qualys
+│   │   ├── Rust
+│   │   ├── Shibboleth
+│   │   ├── TOR
+│   │   ├── VLC
+│   │   └── ZDI
+│   │       ├── Published
+│   │       └── Upcoming
+│   └── Weekly update
+│       ├── AT&T
+│       └── SSD
+└── Trash
