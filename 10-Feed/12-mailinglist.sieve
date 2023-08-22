@@ -92,8 +92,13 @@
     # Jenkins SA are fetched from the osss ML.
     # http://oss-security.openwall.org/wiki/mailing-lists/oss-security
 
+    # rule:[Xen SA - XSA]
     # Xen SA (XSA) are fetched from the xen-announce ML.
     # https://lists.xenproject.org/cgi-bin/mailman/listinfo/xen-announce
+    if header :contains "List-Id" "<xen-announce.lists.xenproject.org>" {
+        fileinto :create "Feed.SA.Xen";
+        stop;
+    }
 
     # Weechat SA are fetched from the weechat-security ML.
     # https://lists.nongnu.org/mailman/listinfo/weechat-security
