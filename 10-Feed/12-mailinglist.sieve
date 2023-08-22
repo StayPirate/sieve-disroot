@@ -100,8 +100,13 @@
         stop;
     }
 
+    # rule:[SA - weechat]
     # Weechat SA are fetched from the weechat-security ML.
     # https://lists.nongnu.org/mailman/listinfo/weechat-security
+    if header :contains "List-Id" "<weechat-security.nongnu.org>" {
+        fileinto :create "Feed.SA.Weechat";
+        stop;
+    }
 
     # OpenJDK Vulnerability Advisory are fetched from the vuln-announce ML.
     # https://mail.openjdk.org/mailman/listinfo/vuln-announce
