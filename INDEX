@@ -78,6 +78,7 @@
 │   │   ├── Android
 │   │   ├── Curl
 │   │   ├── Distro
+│   │   │   ├── Archlinux
 │   │   │   ├── Debian
 │   │   │   ├── Fedora
 │   │   │   ├── openSUSE

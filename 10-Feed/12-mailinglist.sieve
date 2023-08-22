@@ -57,8 +57,13 @@
         stop;
     }
 
-    # Arch Linux Security Advisory (ASA) are fetched from the arch-security ML.
-    # ASA:          https://lists.archlinux.org/listinfo/arch-security
+    # rule:[Archlinux - arch-security]
+    # Archlinux Security Advisory (ASA) are fetched from the arch-security ML.
+    # https://lists.archlinux.org/listinfo/arch-security
+    if header :contains "List-Id" "<arch-security.lists.archlinux.org>" {
+        fileinto :create "Feed.SA.Distro.Archlinux";
+        stop;
+    }
 
     # Gentoo Linux Security Advisories (GLSA) are fetched from the gentoo-announce ML.
     # GLSA:         https://security.gentoo.org/glsa
