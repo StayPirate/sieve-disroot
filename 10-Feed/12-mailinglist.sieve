@@ -81,8 +81,13 @@
         stop;
     }
 
+    # rule:[Oracle Linux SA - ELSA]
     # Oracle Linux Security Advisories (ELSA) are fetched from the el-errata ML.
-    # ELSA:         https://oss.oracle.com/mailman/listinfo/el-errata
+    # https://oss.oracle.com/mailman/listinfo/el-errata
+    if header :contains "List-Id" "<el-errata.oss.oracle.com>" {
+        fileinto :create "Feed.SA.Distro.Oracle";
+        stop;
+    }
 
     # Jenkins SA are fetched from the osss ML.
     # http://oss-security.openwall.org/wiki/mailing-lists/oss-security
