@@ -19,8 +19,13 @@
         stop;
     }
 
+    # rule:[Ubuntu - security announce]
     # Ubuntu Security Notice (USN) are fetched from the ubuntu-security-announce ML.
-    # USN:          https://lists.ubuntu.com/mailman/listinfo/ubuntu-security-announce
+    # https://lists.ubuntu.com/mailman/listinfo/ubuntu-security-announce
+    if header :contains "List-Id" "<ubuntu-security-announce.lists.ubuntu.com>" {
+        fileinto :create "Feed.SA.Distro.Ubuntu";
+        stop;
+    }
 
     # RedHat Security Advisories (RHSA) are gotten by the rhsa-announce ML.
     # RHSA:         https://listman.redhat.com/mailman/listinfo/rhsa-announce
