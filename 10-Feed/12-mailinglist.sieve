@@ -108,8 +108,13 @@
         stop;
     }
 
+    # rule:[OpenJDK SA]
     # OpenJDK Vulnerability Advisory are fetched from the vuln-announce ML.
     # https://mail.openjdk.org/mailman/listinfo/vuln-announce
+    if header :contains "List-Id" "<vuln-announce.openjdk.org>" {
+        fileinto :create "Feed.SA.OpenJDK";
+        stop;
+    }
 
     # Tomcat SA are fetched from the tomcat ML
     # https://lists.apache.org/list?announce@tomcat.apache.org
