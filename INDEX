@@ -84,6 +84,7 @@
 │   │   │   ├── Gentoo
 │   │   │   ├── openSUSE
 │   │   │   ├── RedHat
+│   │   │   ├── Slackware
 │   │   │   ├── SUSE
 │   │   │   │   ├── container
 │   │   │   │   └── image

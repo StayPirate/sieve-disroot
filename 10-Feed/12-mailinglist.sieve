@@ -73,8 +73,13 @@
         stop;
     }
 
+    # rule:[Slackware - slackware-security]
     # Slackware Security Advisories (SSA) are fetched from the slackware-security ML.
-    # SSA:          http://www.slackware.com/lists/archive/
+    # http://www.slackware.com/lists/archive/
+    if address :is "To" "slackware-security@slackware.com" {
+        fileinto :create "Feed.SA.Distro.Slackware";
+        stop;
+    }
 
     # Oracle Linux Security Advisories (ELSA) are fetched from the el-errata ML.
     # ELSA:         https://oss.oracle.com/mailman/listinfo/el-errata
