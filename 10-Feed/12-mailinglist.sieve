@@ -116,8 +116,17 @@
         stop;
     }
 
+    # rule:[Tomcat SA]
     # Tomcat SA are fetched from the tomcat ML
     # https://lists.apache.org/list?announce@tomcat.apache.org
+    if header :contains "List-Id" "<announce.tomcat.apache.org>" {
+        if header :contains "Subject" "[SECURITY]" { 
+            fileinto :create "Feed.SA.Tomcat";
+        } else {
+            discard;
+        }
+        stop;
+    }
 
 #   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
 #   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
