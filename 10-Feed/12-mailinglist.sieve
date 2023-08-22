@@ -27,8 +27,13 @@
         stop;
     }
 
-    # RedHat Security Advisories (RHSA) are gotten by the rhsa-announce ML.
-    # RHSA:         https://listman.redhat.com/mailman/listinfo/rhsa-announce
+    # rule:[RedHat - security announce]
+    # RedHat Security Advisories (RHSA) are fetched from the rhsa-announce ML.
+    # https://listman.redhat.com/mailman/listinfo/rhsa-announce
+    if header :contains "List-Id" "<rhsa-announce.redhat.com>" {
+        fileinto :create "Feed.SA.Distro.RedHat";
+        stop;
+    }
 
     # openSUSE Security Update (openSUSE-SU/SUSE-SU) are fetched from the security-announce ML.
     # If the update is shipped to both openSUSE and SUSE, then the name is SUSE-SU, while if
