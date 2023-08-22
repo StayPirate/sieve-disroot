@@ -135,8 +135,13 @@
 #   ██║  ██║███████╗███████╗███████╗██║  ██║███████║███████╗
 #   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝
 
+    # rule:[Seclist - nmap announce]
     # Nmap/Npcap announcements are fetched from the nmap announce ML.
     # https://nmap.org/mailman/listinfo/announce
+    if header :contains "List-Id" "<announce.nmap.org>" {
+        fileinto :create "Feed.Release.Nmap";
+        stop;
+    }
 
 #   ███╗   ██╗███████╗██╗    ██╗███████╗    ██╗     ███████╗████████╗████████╗███████╗██████╗ 
 #   ████╗  ██║██╔════╝██║    ██║██╔════╝    ██║     ██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
