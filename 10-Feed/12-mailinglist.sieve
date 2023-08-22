@@ -65,8 +65,13 @@
         stop;
     }
 
+    # rule:[Gentoo Linux Security Advisories - gentoo-announce]
     # Gentoo Linux Security Advisories (GLSA) are fetched from the gentoo-announce ML.
-    # GLSA:         https://security.gentoo.org/glsa
+    # https://www.gentoo.org/support/security/
+    if header :contains "List-Id" "<gentoo-announce.gentoo.org>" {
+        fileinto :create "Feed.SA.Distro.Gentoo";
+        stop;
+    }
 
     # Slackware Security Advisories (SSA) are fetched from the slackware-security ML.
     # SSA:          http://www.slackware.com/lists/archive/
