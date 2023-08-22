@@ -35,14 +35,27 @@
         stop;
     }
 
-    # openSUSE Security Update (openSUSE-SU/SUSE-SU) are fetched from the security-announce ML.
-    # If the update is shipped to both openSUSE and SUSE, then the name is SUSE-SU, while if
-    # it's exclusive for openSUSE it is named openSUSE-SU.
-    # openSUSE-SU:  https://lists.opensuse.org/archives/list/security-announce@lists.opensuse.org
+    # rule:[OpenSUSE - security-announce]
+    # https://lists.opensuse.org/archives/list/security-announce@lists.opensuse.org/
+    if header :contains "List-Id" "<security-announce.lists.opensuse.org>" {
+        fileinto :create "Feed.SA.Distro.openSUSE";
+        stop;
+    }
 
-    # SUSE Security Update (SUSE-SU) are fetched from the sle-security-updates ML.
-    # It also notify about "SUSE Container Update Advisory" and "SUSE Image Update Advisory" as well. 
-    # SUSE-SU:      https://lists.suse.com/mailman/listinfo/sle-security-updates
+    # rule:[sle-security-updates]
+    # https://lists.suse.com/mailman/listinfo/sle-security-updates
+    if header :contains "List-Id" "<sle-security-updates.lists.suse.com>" {
+        if body :contains "SUSE Container Update Advisory" {
+            fileinto :create "Feed.SA.Distro.SUSE.container";
+        }
+        elsif body :contains "SUSE Image Update Advisory" {
+            fileinto :create "Feed.SA.Distro.SUSE.image";
+        }
+        else {
+            fileinto :create "Feed.SA.Distro.SUSE";
+        }
+        stop;
+    }
 
     # Arch Linux Security Advisory (ASA) are fetched from the arch-security ML.
     # ASA:          https://lists.archlinux.org/listinfo/arch-security

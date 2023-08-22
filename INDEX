@@ -80,7 +80,11 @@
 │   │   ├── Distro
 │   │   │   ├── Debian
 │   │   │   ├── Fedora
+│   │   │   ├── openSUSE
 │   │   │   ├── RedHat
+│   │   │   ├── SUSE
+│   │   │   │   ├── container
+│   │   │   │   └── image
 │   │   │   └── Ubuntu
 │   │   ├── Dovecot
 │   │   ├── Drupal
