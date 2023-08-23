@@ -202,7 +202,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Intezer]
     # https://www.intezer.com/blog/
-    if header :contains "X-RSS-Feed" "https://www.intezer.com" {
+    if header :contains "X-RSS-Feed" "intezer.com" {
         fileinto :create "Feed.Blog.Intezer";
         stop;
     }
