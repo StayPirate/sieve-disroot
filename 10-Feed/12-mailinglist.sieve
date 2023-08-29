@@ -153,5 +153,11 @@ require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include
     # Linux Foundation
     # https://linuxfoundation.org
 
-    # CyberSaiyan (ITA)
+    # rule:[NL - CyberSaiyan]
     # https://cybersaiyan.us17.list-manage.com
+    if anyof( header :contains "X-campaignid" "mailchimpf988b10b57d02d9e7119d186a",
+              header :contains "X-Campaign" "mailchimpf988b10b57d02d9e7119d186a" ) {
+        fileinto :create "Feed.News Letter.CyberSaiyan";
+        addflag "italian";
+        stop;
+    }
