@@ -31,6 +31,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # Apple Security Blog
+    # https://security.apple.com/blog/
+    if header :contains "Subject" "Apple Security Blog" {
+        fileinto :create "Feed.Blog.Apple Security";
+        stop;
+    }
+
 #   ███████╗███████╗ ██████╗     █████╗ ██████╗ ██╗   ██╗██╗███████╗ ██████╗ ██████╗ ██╗   ██╗
 #   ██╔════╝██╔════╝██╔════╝    ██╔══██╗██╔══██╗██║   ██║██║██╔════╝██╔═══██╗██╔══██╗╚██╗ ██╔╝
 #   ███████╗█████╗  ██║         ███████║██║  ██║██║   ██║██║███████╗██║   ██║██████╔╝ ╚████╔╝ 
