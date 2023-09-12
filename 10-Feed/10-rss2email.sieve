@@ -573,7 +573,8 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://chromereleases.googleblog.com
     if allof ( header :contains "X-RSS-Feed" "chromereleases.googleblog.com",
                header :contains "Keywords" "Desktop Update",
-               header :contains "Keywords" "Stable updates" ) {
+               header :contains "Keywords" "Stable updates",
+               body :contains [ "linux", "Linux" ] ) {
         fileinto :create "Feed.Release.Chrome";
         stop;
     }
