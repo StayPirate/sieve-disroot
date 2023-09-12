@@ -844,6 +844,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[The Cyber Show]
+    # https://cybershow.uk/
+    if header :is "X-RSS-Feed" "https://open.spotify.com/show/0av5zTSOSIuBBtOjqjJWFc" {
+        fileinto :create "Feed.Podcast.The Cyber Show";
+        stop;
+    }
+
 #    ██████╗ ████████╗██╗  ██╗███████╗██████╗ 
 #   ██╔═══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
 #   ██║   ██║   ██║   ███████║█████╗  ██████╔╝
