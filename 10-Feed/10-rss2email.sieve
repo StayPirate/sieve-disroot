@@ -648,8 +648,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     if header :is "X-RSS-Feed" "https://developer.apple.com/news/" {
         # I'm only interested to stable iOS and watchOS updates
         if allof( header :contains "Subject" [ "iOS", "watchOS" ],
-                  not header :contains "Subject" "beta",
-                  not header :contains "Subject" "RC" ) {
+                  not header :contains "Subject" [ "beta", "RC", "Release Candidate" ] ) {
             fileinto :create "Feed.Release.Apple";
             stop;
         }
