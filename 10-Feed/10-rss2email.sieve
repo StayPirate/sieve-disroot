@@ -420,6 +420,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # Wiz Blog
+    # https://www.wiz.io/blog
+    if allof ( header :contains "X-RSS-Feed" "wiz.io",
+               not header :contains "Subject" [ "Wiz", "wiz" ] ) {
+        fileinto :create "Feed.Blog.Wiz";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
