@@ -428,6 +428,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # Isosceles Blog
+    # https://blog.isosceles.com/
+    if header :contains "X-RSS-Feed" "isosceles.com" {
+        fileinto :create "Feed.Blog.Isosceles";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
