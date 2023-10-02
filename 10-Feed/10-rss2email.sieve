@@ -438,6 +438,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # Gitlab Blog
     # https://about.gitlab.com/blog/categories/security/
     if allof ( header :contains "X-RSS-Feed" "gitlab.com/blog",
+               not header :contains "Subject" "Security Release",
                anyof ( header :contains "Subject" [ "Security", "security" ],
                        body :contains [ "Security", "security" ] )) {
         fileinto :create "Feed.Blog.Gitlab";
