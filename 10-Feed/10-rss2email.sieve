@@ -435,6 +435,15 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # Gitlab Blog
+    # https://about.gitlab.com/blog/categories/security/
+    if allof ( header :contains "X-RSS-Feed" "gitlab.com/blog",
+               anyof ( header :contains "Subject" [ "Security", "security" ],
+                       body :contains [ "Security", "security" ] )) {
+        fileinto :create "Feed.Blog.Gitlab";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
