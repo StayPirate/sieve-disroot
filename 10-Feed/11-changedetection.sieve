@@ -150,6 +150,12 @@ if header :is "X-Application" "changedetection.io" {
 #   ╚██████╔╝   ██║   ██║  ██║███████╗██║  ██║
 #    ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 
+    # rule:[Changedetection Alerts]
+    if header :contains "Subject" "Changedetection.io - Alert" {
+        fileinto :create "Inbox";
+        stop;
+    }
+
     # If the email did not match any of the above rules, then trash it. But flag it first,
     # so looking in the trash folder I can undestand from where the email was deleted.
     addflag "${CHANGEDETECTION}";
