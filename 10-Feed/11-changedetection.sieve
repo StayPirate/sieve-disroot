@@ -45,6 +45,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # darkvortex personal Blog
+    # https://0xdarkvortex.dev/tags/blogs/
+    if header :contains "Subject" "Dark Vortex" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗ ██████╗     █████╗ ██████╗ ██╗   ██╗██╗███████╗ ██████╗ ██████╗ ██╗   ██╗
 #   ██╔════╝██╔════╝██╔════╝    ██╔══██╗██╔══██╗██║   ██║██║██╔════╝██╔═══██╗██╔══██╗╚██╗ ██╔╝
 #   ███████╗█████╗  ██║         ███████║██║  ██║██║   ██║██║███████╗██║   ██║██████╔╝ ╚████╔╝ 
