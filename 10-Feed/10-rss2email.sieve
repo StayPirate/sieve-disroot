@@ -695,7 +695,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[foot]
     # https://codeberg.org/dnkl/foot/releases
-    if header :is "X-RSS-Feed" "https://codeberg.org/dnkl/foot/releases" {
+    if header :contains "X-RSS-Feed" "dnkl/foot/release" {
         fileinto :create "Feed.Release.Foot";
         stop;
     }
