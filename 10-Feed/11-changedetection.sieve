@@ -108,6 +108,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # rule:[Supermicro SA]
+    # https://www.supermicro.com/en/support/security_center#!advisories
+    if header :contains "Subject" "Supermicro SA" {
+        fileinto :create "Feed.SA.Supermicro";
+        stop;
+    }
+
 #   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
 #   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
 #   ██████╔╝█████╗  ██║     █████╗  ███████║███████╗█████╗  
