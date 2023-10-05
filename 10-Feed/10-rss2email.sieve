@@ -445,6 +445,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Binarly Blog]
+    # https://binarly.io/posts/index.html
+    if header :contains "X-RSS-Feed" "binarly.io/posts" {
+        fileinto :create "Feed.Blog.Binarly";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
@@ -584,6 +591,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.zerodayinitiative.com/advisories/published/
     if header :contains "X-RSS-Feed" "zerodayinitiative.com/advisories/published" {
         fileinto :create "Feed.SA.ZDI.Published";
+        stop;
+    }
+
+    # rule:[Binarly SA]
+    # https://binarly.io/advisories/index.html
+    if header :contains "X-RSS-Feed" "binarly.io/advisories" {
+        fileinto :create "Feed.SA.Binarly";
         stop;
     }
 

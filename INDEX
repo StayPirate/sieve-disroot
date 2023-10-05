@@ -4,6 +4,7 @@
 │   │   ├── Aquasec
 │   │   ├── ASEC
 │   │   ├── Avast
+│   │   ├── Binarly
 │   │   ├── Chrome
 │   │   ├── Chromium
 │   │   ├── Citizen Lab
@@ -84,6 +85,7 @@
 │   ├── SA
 │   │   ├── AMD
 │   │   ├── Android
+│   │   ├── Binarly
 │   │   ├── Curl
 │   │   ├── Distro
 │   │   │   ├── Archlinux
