@@ -95,7 +95,8 @@ require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include
     # rule:[Xen SA - XSA]
     # Xen SA (XSA) are fetched from the xen-announce ML.
     # https://lists.xenproject.org/cgi-bin/mailman/listinfo/xen-announce
-    if header :contains "List-Id" "<xen-announce.lists.xenproject.org>" {
+    if allof ( header :contains "List-Id" "<xen-announce.lists.xenproject.org>",
+               header :contains "Subject" "security" ) {
         fileinto :create "Feed.SA.Xen";
         stop;
     }
