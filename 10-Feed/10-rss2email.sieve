@@ -704,7 +704,8 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://www.wireshark.org/docs/relnotes
     # https://gitlab.com/wireshark/wireshark/-/tags
     if allof( header :contains "X-RSS-Feed" "https://gitlab.com/wireshark/wireshark",
-              header :contains "Subject" "wireshark-" ) {
+              header :contains "Subject" "wireshark-",
+              not header :contains "Subject" "rc" ) {
         fileinto :create "Feed.Release.Wireshark";
         stop;
     }
