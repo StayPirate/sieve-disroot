@@ -2,6 +2,8 @@
 
 require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include", "imap4flags", "body", "regex" ];
 
+global [ "MAILINGLIST" ];
+
 #   ███████╗███████╗ ██████╗     █████╗ ██████╗ ██╗   ██╗██╗███████╗ ██████╗ ██████╗ ██╗   ██╗
 #   ██╔════╝██╔════╝██╔════╝    ██╔══██╗██╔══██╗██║   ██║██║██╔════╝██╔═══██╗██╔══██╗╚██╗ ██╔╝
 #   ███████╗█████╗  ██║         ███████║██║  ██║██║   ██║██║███████╗██║   ██║██████╔╝ ╚████╔╝ 
@@ -95,10 +97,15 @@ require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include
     # rule:[Xen SA - XSA]
     # Xen SA (XSA) are fetched from the xen-announce ML.
     # https://lists.xenproject.org/cgi-bin/mailman/listinfo/xen-announce
-    if allof ( header :contains "List-Id" "<xen-announce.lists.xenproject.org>",
-               header :contains "Subject" "security" ) {
-        fileinto :create "Feed.SA.Xen";
-        stop;
+    if header :contains "List-Id" "<xen-announce.lists.xenproject.org>" {
+        if not header :contains "Subject" "security" {
+            # Tag it, so it will be trashed.
+            addflag "${MAILINGLIST}";
+        }
+        else {
+            fileinto :create "Feed.SA.Xen";
+            stop;
+        }
     }
 
     # rule:[SA - weechat]
@@ -160,5 +167,19 @@ require [ "fileinto", "mailbox", "envelope", "subaddress", "variables", "include
               header :contains "X-Campaign" "mailchimpf988b10b57d02d9e7119d186a" ) {
         fileinto :create "Feed.News Letter.CyberSaiyan";
         addflag "italian";
+        stop;
+    }
+
+#    ██████╗ ████████╗██╗  ██╗███████╗██████╗ 
+#   ██╔═══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
+#   ██║   ██║   ██║   ███████║█████╗  ██████╔╝
+#   ██║   ██║   ██║   ██╔══██║██╔══╝  ██╔══██╗
+#   ╚██████╔╝   ██║   ██║  ██║███████╗██║  ██║
+#    ╚═════╝    ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+
+    # Trash all the emails matching the ${MAILINGLIST} flag. I add this flag on the above rules
+    # to tag emails coming from MLs that need to be trashed.
+    if hasflag :contains "${MAILINGLIST}" {
+        fileinto :create "Trash";
         stop;
     }

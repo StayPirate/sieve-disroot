@@ -9,9 +9,10 @@ global [ "WORK_ADDR" ];
 set "WORK_ADDR" "ggabrielli@suse.de";
 
 ### Global Flag ###
-global [ "RSS2EMAIL", "CHANGEDETECTION" ];
+global [ "RSS2EMAIL", "CHANGEDETECTION", "MAILINGLIST" ];
 set "RSS2EMAIL"         "rss2email";
 set "CHANGEDETECTION"   "changedetection";
+set "MAILINGLIST"       "mailinglist";
 
 include :personal "10-rss2email.sieve";
 include :personal "11-changedetection.sieve";
