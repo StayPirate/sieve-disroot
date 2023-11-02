@@ -904,6 +904,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[RSS-Bridge errors]
+    if allof ( header :contains "X-RSS-Link" "rss-bridge.home",
+               header :contains "Subject" "error" ) {
+        # A RSS bridge returned a HTTP error. Do not trash, instead send it to INBOX.
+        stop;
+    }
+
 #    ██████╗ ████████╗██╗  ██╗███████╗██████╗ 
 #   ██╔═══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
 #   ██║   ██║   ██║   ███████║█████╗  ██████╔╝
