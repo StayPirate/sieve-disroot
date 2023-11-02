@@ -890,6 +890,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[FIRST Impressions]
+    # https://www.first.org/podcasts
+    if header :is "X-RSS-Feed" "https://open.spotify.com/show/6mdVBCDxhGKuULeca9psdl" {
+        fileinto :create "Feed.Podcast.FIRST Impressions";
+        stop;
+    }
+
 #    ██████╗ ████████╗██╗  ██╗███████╗██████╗ 
 #   ██╔═══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
 #   ██║   ██║   ██║   ███████║█████╗  ██████╔╝
