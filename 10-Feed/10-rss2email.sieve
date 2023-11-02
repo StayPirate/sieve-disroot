@@ -452,6 +452,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[FIRST Blog]
+    # https://www.first.org/blog/
+    if header :contains "X-RSS-Feed" "first.org/blog" {
+        fileinto :create "Feed.Blog.FIRST";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
