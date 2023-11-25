@@ -473,6 +473,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Maksim Chudakov Blog]
+    # https://www.chudamax.com/
+    if header :contains "X-RSS-Feed" "chudamax.com" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
