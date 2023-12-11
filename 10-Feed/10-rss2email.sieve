@@ -459,13 +459,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
-    # rule:[Trickest Blog]
-    # https://trickest.com/blog/
-    if header :contains "X-RSS-Feed" "trickest.com" {
-        fileinto :create "Feed.Blog.Trickest";
-        stop;
-    }
-
     # rule:[Steve on Security Blog]
     # https://syfuhs.net/
     if header :contains "X-RSS-Feed" "syfuhs.net" {
