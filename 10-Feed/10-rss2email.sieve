@@ -480,6 +480,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[The Hacker's Choice (THC) Blog]
+    # https://blog.thc.org/
+    if header :contains "X-RSS-Feed" "blog.thc.org" {
+        fileinto :create "Feed.Blog.THC";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
