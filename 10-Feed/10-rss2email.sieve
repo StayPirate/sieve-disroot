@@ -660,13 +660,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
-    # rule:[Podman]
-    # https://www.drupal.org/security
-    if header :is "X-RSS-Feed" "https://github.com/containers/podman/releases" {
-        fileinto :create "Feed.Release.Podman";
-        stop;
-    }
-
     # rule:[SUSE userscripts]
     # https://gitlab.suse.de/gsonnu/userscripts
     if header :is "X-RSS-Feed" "https://gitlab.suse.de/gsonnu/userscripts" {
@@ -742,13 +735,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
               header :contains "Subject" "wireshark-",
               not header :contains "Subject" "rc" ) {
         fileinto :create "Feed.Release.Wireshark";
-        stop;
-    }
-
-    # rule:[SNIProxy]
-    # https://github.com/dlundquist/sniproxy
-    if header :contains "X-RSS-Feed" "https://github.com/dlundquist/sniproxy/releases" {
-        fileinto :create "Feed.Release.sniproxy";
         stop;
     }
 
