@@ -480,9 +480,9 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
-    # rule:[The Hacker's Choice (THC) Blog]
+    # rule:[The Hacker's Choice (THC) Blog and KB]
     # https://blog.thc.org/
-    if header :contains "X-RSS-Feed" "blog.thc.org" {
+    if header :contains "X-RSS-Feed" [ "blog.thc.org", "iq.thc.org" ] {
         fileinto :create "Feed.Blog.THC";
         stop;
     }
