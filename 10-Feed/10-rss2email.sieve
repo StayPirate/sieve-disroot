@@ -629,6 +629,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Linux Kernel CNA SA]
+    # https://lore.kernel.org/linux-cve-announce/
+    if header :contains "X-RSS-Feed" "lore.kernel.org/linux-cve-announce/" {
+        fileinto :create "Feed.SA.Linux";
+        stop;
+    }
+
 #   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
 #   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
 #   ██████╔╝█████╗  ██║     █████╗  ███████║███████╗█████╗  
