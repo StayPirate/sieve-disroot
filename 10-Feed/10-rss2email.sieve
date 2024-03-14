@@ -480,6 +480,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Drew DeVault blog]
+    # The creator of sway
+    # https://drewdevault.com/
+    if header :contains "X-RSS-Feed" "drewdevault.com" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
