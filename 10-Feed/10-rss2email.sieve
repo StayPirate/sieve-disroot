@@ -644,6 +644,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Unifi Security Advisory Bulletin]
+    # https://community.ui.com/rss/releases/Security/f3f45fa2-1784-4594-b48d-28baf317b208
+    if allof ( header :is "X-RSS-Feed" "https://community.ui.com",
+               header :contains "Keywords" "security" ) {
+        fileinto :create "Feed.SA.Unifi";
+        stop;
+    }
+
 #   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
 #   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
 #   ██████╔╝█████╗  ██║     █████╗  ███████║███████╗█████╗  
