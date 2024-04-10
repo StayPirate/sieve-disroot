@@ -488,6 +488,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Jmpeax's Blog]
+    # https://jmpeax.dev/
+    if header :contains "X-RSS-Feed" "jmpeax.dev" {
+        fileinto :create "Feed.Blog.Good Reads";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
