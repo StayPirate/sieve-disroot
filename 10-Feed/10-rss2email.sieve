@@ -761,6 +761,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Proxmox]
+    # https://my.proxmox.com/en/announcements/tag/proxmox-ve
+    # https://pve.proxmox.com/wiki/Roadmap
+    if header :contains "X-RSS-Feed" "proxmox.com" {
+        fileinto :create "Feed.Release.Proxmox";
+        stop;
+    }
+
 #   ███╗   ██╗███████╗██╗    ██╗███████╗
 #   ████╗  ██║██╔════╝██║    ██║██╔════╝
 #   ██╔██╗ ██║█████╗  ██║ █╗ ██║███████╗
