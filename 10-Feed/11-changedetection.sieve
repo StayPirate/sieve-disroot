@@ -143,6 +143,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # rule:[Proxmox Changelog]
+    # https://pve.proxmox.com/wiki/Roadmap
+    if header :contains "Subject" "Proxomox What Changed" {
+        fileinto :create "Feed.Release.Proxmox";
+        stop;
+    }
+
 #   ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
 #   ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
 #   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ 
