@@ -256,7 +256,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[Kaspersky Securelist]
     # https://securelist.com/
     if allof( header :contains "X-RSS-Feed" "https://securelist.com",
-              header :contains "Keywords" [ "Malware", "Incidents", "Research" ]) {
+              header :contains "Keywords" [ "Malware", "Incidents", "Research", "Vulnerabilit", "exploit", "Zero-day" ]) {
         fileinto :create "Feed.Blog.Securelist";
         stop;
     }
