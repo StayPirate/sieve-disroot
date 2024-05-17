@@ -136,7 +136,7 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
-    # rule:[Thunderbird]
+    # rule:[Thunderbird changedetection]
     # https://www.thunderbird.net/en-US/thunderbird/releases
     if header :contains "Subject" "Thunderbird" {
         fileinto :create "Feed.Release.Thunderbird";

@@ -737,7 +737,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://developer.apple.com/news/releases/
     if header :is "X-RSS-Feed" "https://developer.apple.com/news/" {
         # I'm only interested to stable iOS and watchOS updates
-        if allof( header :contains "Subject" [ "iOS", "watchOS" ],
+        if allof ( header :contains "Subject" [ "iOS", "watchOS" ],
                   not header :contains "Subject" [ "beta", "RC", "Release Candidate" ] ) {
             fileinto :create "Feed.Release.Apple";
             stop;
@@ -754,7 +754,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[Wireshark]
     # https://www.wireshark.org/docs/relnotes
     # https://gitlab.com/wireshark/wireshark/-/tags
-    if allof( header :contains "X-RSS-Feed" "https://gitlab.com/wireshark/wireshark",
+    if allof ( header :contains "X-RSS-Feed" "https://gitlab.com/wireshark/wireshark",
               header :contains "Subject" "wireshark-",
               not header :contains "Subject" "rc" ) {
         fileinto :create "Feed.Release.Wireshark";
@@ -766,6 +766,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # https://pve.proxmox.com/wiki/Roadmap
     if header :contains "X-RSS-Feed" "proxmox.com" {
         fileinto :create "Feed.Release.Proxmox";
+        stop;
+    }
+
+    # rule:[Thunderbird]
+    # https://www.thunderbird.net/en-US/thunderbird/releases/
+    if allof ( header :contains "X-RSS-Feed" "thunderbird.net",
+               header :contains "X-RSS-Feed" "releases" ) {
+        fileinto :create "Feed.Release.Thunderbird";
         stop;
     }
 
@@ -811,7 +819,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[devops.com]
     # https://devops.com/
-    if allof( header :contains "X-RSS-Feed" "https://devops.com",
+    if allof ( header :contains "X-RSS-Feed" "https://devops.com",
               header :contains "Keywords" [ "security", "sbom", "supply chain", "git", "linux", "2fa", "authentication", "mfa" ] ) {
         fileinto :create "Feed.News.FOSS";
         stop;
@@ -819,7 +827,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Devclass]
     # https://devclass.com - Filter only security related posts
-    if allof( header :contains "X-RSS-Feed" "https://devclass.com",
+    if allof ( header :contains "X-RSS-Feed" "https://devclass.com",
               header :contains "Keywords" "security" ) {
         fileinto :create "Feed.News.Devclass";
         stop;
