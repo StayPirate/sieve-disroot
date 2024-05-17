@@ -96,11 +96,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[TOR blog]
     # https://blog.torproject.org/
     # Ignore release notifications
-    if allof ( header :is "X-RSS-Feed" "https://blog.torproject.org/",
-               not header :contains "Subject" "New",
-               not header :contains "Subject" "Release:" ) {
-        fileinto :create "Feed.Blog.TOR";
-        stop;
+    if header :is "X-RSS-Feed" "https://blog.torproject.org/" {
+        if anyof ( header :contains "Subject" "security",
+                   allof ( not header :contains "Subject" "New",
+                           not header :contains "Subject" "Release:" )) {
+            fileinto :create "Feed.Blog.TOR";
+            stop;
+        }
     }
 
     # rule:[Guerre di rete]
