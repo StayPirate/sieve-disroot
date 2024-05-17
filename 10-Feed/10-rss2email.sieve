@@ -613,7 +613,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
     # rule:[OpenWRT]
     # OpenWRT SA
     # https://openwrt.org/advisory/start
-    if header :contains "X-RSS-Feed" "https://openwrt.org/advisory" {
+    if header :contains "X-RSS-Feed" "https://openwrt.org" {
         fileinto :create "Feed.SA.OpenWRT";
         stop;
     }
