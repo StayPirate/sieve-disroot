@@ -497,6 +497,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Null Signal Blog]
+    # https://nullsignal.games/blog (Netrunner Android)
+    if header :contains "X-RSS-Feed" "https://nullsignal.games" {
+        fileinto :create "Feed.Other.Blog";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
