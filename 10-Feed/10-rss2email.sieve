@@ -513,8 +513,26 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[AppSec]
     # https://github.com/Simpsonpt/AppSecEzine
-    if header :is "X-RSS-Feed" "https://github.com/Simpsonpt/AppSecEzine/commits/master" {
-        fileinto :create "Feed.Ezine.AppSec";
+    if header :is "X-RSS-Feed" "https://xl-sec.github.io/AppSecEzine/latest.rss" {
+        if anyof ( header :regex "Subject" "^Must see: .*",
+                   header :is "Keywords" "Must see" ) {
+            fileinto :create "Feed.Ezine.AppSec.Must see";
+        }
+        elsif anyof ( header :regex "Subject" "^Hack: .*",
+                      header :is "Keywords" "Hack" ) {
+            fileinto :create "Feed.Ezine.AppSec.Hack";
+        }
+        elsif anyof ( header :regex "Subject" "^Security: .*",
+                      header :is "Keywords" "Security" ) {
+            fileinto :create "Feed.Ezine.AppSec.Security";
+        }
+        elsif anyof ( header :regex "Subject" "^Fun: .*",
+                      header :is "Keywords" "Fun" ) {
+            fileinto :create "Feed.Ezine.AppSec.Fun";
+        }
+        else {
+            fileinto :create "Feed.Ezine.AppSec";
+        }
         stop;
     }
 
