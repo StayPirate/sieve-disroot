@@ -1,0 +1,663 @@
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
+#                                                                                                   #
+#        Most of the email filtering is done from the IMAP server with dedicated sieve rules,       #
+#       I really recommend to only use this config file along with the following sieve script.      #
+#  https://github.com/StayPirate/sieve-susede/blob/master/40-Feeds/40-crazybyte-security-feed.sieve #
+#                                                                                                   #
+#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#
+
+
+#   ██╗    ██╗███████╗███████╗██╗  ██╗██╗  ██╗   ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗
+#   ██║    ██║██╔════╝██╔════╝██║ ██╔╝██║  ╚██╗ ██╔╝    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝
+#   ██║ █╗ ██║█████╗  █████╗  █████╔╝ ██║   ╚████╔╝     ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  
+#   ██║███╗██║██╔══╝  ██╔══╝  ██╔═██╗ ██║    ╚██╔╝      ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  
+#   ╚███╔███╔╝███████╗███████╗██║  ██╗███████╗██║       ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗
+#    ╚══╝╚══╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚═╝        ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+
+# SSD Secure Disclosure Youtube channels. https://www.youtube.com/channel/UC9ZnYbYqOe6Y3eRdw0TMz9Q
+https://www.youtube.com/feeds/videos.xml?channel_id=UC9ZnYbYqOe6Y3eRdw0TMz9Q
+- template: /templates/default.tmpl
+- include-title: Cyber Security News Recap
+- include-title: Cybersecurity News Recap
+- include-title: CVE of the Month
+- include-title: Cybersecurity News of
+
+# AT&T Youtube tech channel. https://www.youtube.com/channel/UCnpDurxReTSpFs5-AhDo8Kg
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnpDurxReTSpFs5-AhDo8Kg
+- template: /templates/default.tmpl
+- include-title: Internet Weather Report
+- include-title: Cybersecurity Year in Review
+- include-title: Cybersecurity Predictions
+
+#### TODO  #### # LWN - Linux Weekly News: News from the source
+#### TODO  #### https://lwn.net/headlines/rss
+#### TODO  #### - template: /templates/default.tmpl
+#### TODO  #### 
+#### TODO  #### # In order to only get security-related article from LWN I could use
+#### TODO  #### # this page: https://lwn.net/headlines/text, but I need to use urlwatch.
+#### TODO  #### # Then I can replace the above feed.
+
+
+#   ██████╗ ██╗      ██████╗  ██████╗ 
+#   ██╔══██╗██║     ██╔═══██╗██╔════╝ 
+#   ██████╔╝██║     ██║   ██║██║  ███╗
+#   ██╔══██╗██║     ██║   ██║██║   ██║
+#   ██████╔╝███████╗╚██████╔╝╚██████╔╝
+#   ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝ 
+
+# Github Security Blog
+https://github.blog/category/security/feed
+- template: /templates/default.tmpl
+
+# Mozilla Security Blog
+https://blog.mozilla.org/security/feed/
+- template: /templates/default.tmpl
+
+# Chromium Blog
+# It's not easy to get feeds based on category, but the header
+# 'Keywords' plays a role here and need to be preserved in the
+# email via {{.RSSItem.Categories}}. A sieve rule will only allows
+# email with 'Keywords' containing 'security'.
+http://blog.chromium.org/atom.xml
+- template: /templates/chrome-blog.tmpl
+
+# Chrome security blog
+https://feeds.feedburner.com/GoogleOnlineSecurityBlog
+- template: /templates/chrome-blog.tmpl
+
+https://blog.google/rss/
+- template: /templates/chrome-blog.tmpl
+
+# Disabled until https://github.com/skx/rss2email/issues/103 is resolved
+# Microsoft security blog
+#https://www.microsoft.com/security/blog/feed/
+#- template: /templates/default.tmpl
+
+https://msrc-blog.microsoft.com/feed/
+- template: /templates/default.tmpl
+
+# TOR blog
+https://blog.torproject.org/rss.xml
+- template: /templates/default.tmpl
+
+# Guerre di rete (Italian)
+https://guerredirete.substack.com/feed
+- template: /templates/default.tmpl
+
+# Justin Steven SA - https://www.justinsteven.com/
+https://github.com/justinsteven/advisories/commits/main.atom
+- template: /templates/default.tmpl
+
+# Cryptography Dispatches by Filippo Valsorda (AKA FiloSottile)
+# Update 29/7/22: Filippo moved his blog to words.filippo.io
+#https://buttondown.email/cryptography-dispatches/rss
+https://words.filippo.io/dispatches/rss/
+- template: /templates/default.tmpl
+
+# Essays, opinions, and advice on the act of computer programming from Stack Overflow.
+https://stackoverflow.blog/feed/
+- template: /templates/default.tmpl
+
+# Center for Transparency and Digital Human Rights
+https://www.hermescenter.org/press/feed/
+- template: /templates/default.tmpl
+
+https://www.copernicani.it/rss
+- template: /templates/default.tmpl
+
+#https://www.sentinelone.com/feed/
+#- template: /templates/default.tmpl
+
+# Lennart Poettering personal blog
+https://0pointer.net/blog/index.atom
+- template: /templates/default.tmpl
+
+https://blog.cloudflare.com/rss/
+- template: /templates/default.tmpl
+
+https://grsecurity.net/blog.rss
+- template: /templates/default.tmpl
+
+https://www.intezer.com/blog/feed/
+- template: /templates/default.tmpl
+
+https://decoded.avast.io/feed/
+- template: /templates/default.tmpl
+
+# Google Project Zero
+# https://googleprojectzero.blogspot.com/
+https://googleprojectzero.blogspot.com/feeds/posts/default
+- template: /templates/default.tmpl
+
+# Thunderbird blog (not security related)
+https://blog.thunderbird.net/feed/
+- template: /templates/default.tmpl
+
+# David Buchanan blog - CTF writeups, programming, and miscellaneous stuff.
+https://www.da.vidbuchanan.co.uk/blog/rss.xml
+- template: /templates/default.tmpl
+
+# Mia mamma usa linux
+http://www.miamammausalinux.org/feed/
+- template: /templates/default.tmpl
+
+# Daniel Stenberg personal blog (curl)
+https://daniel.haxx.se/blog/feed/
+- template: /templates/default.tmpl
+
+# Sekoia Blog
+https://blog.sekoia.io/feed/
+- template: /templates/default.tmpl
+
+# Kaspersky Securelist Blog
+https://securelist.com/feed/
+- template: /templates/default.tmpl
+
+# Uptycs Blog
+https://www.uptycs.com/blog/rss.xml
+- template: /templates/default.tmpl
+
+# The Citizen Lab
+https://citizenlab.ca/category/research/feed/
+- template: /templates/default.tmpl
+
+# Gankra Personal Blog
+https://faultlore.com/blah/rss.xml
+- template: /templates/default.tmpl
+
+# Mandiant Blog
+https://www.mandiant.com/resources/blog/rss.xml
+- template: /templates/default.tmpl
+
+# Matthew Garrett personal Blog
+https://mjg59.dreamwidth.org/data/atom
+- template: /templates/default.tmpl
+- delay: 5
+
+# Scott Helme personal Blog
+https://scotthelme.co.uk/rss/
+- template: /templates/default.tmpl
+
+# Martijn Braam personal Blog
+https://blog.brixit.nl/rss/
+- template: /templates/default.tmpl
+
+# Memorysafety
+https://www.memorysafety.org/index.xml
+- template: /templates/default.tmpl
+
+# Elastic - Security Labs
+https://www.elastic.co/security-labs/feed
+- template: /templates/default.tmpl
+
+# Aqua Security
+https://blog.aquasec.com/rss.xml
+- template: /templates/default.tmpl
+
+# Symantec Security Blog
+https://sed-cms.broadcom.com/rss/v1/blogs/rss.xml
+- template: /templates/default.tmpl
+
+# Jared Candelaria poersonal blog
+https://calabi-yau.space/blog/feeds/all.atom.xml
+- template: /templates/default.tmpl
+
+# Diary of a reverse-engineer (Axel -0vercl0k- Souchet)
+https://doar-e.github.io/feeds/atom.xml
+- template: /templates/default.tmpl
+
+# Adam Zabrocki personal Blog
+http://blog.pi3.com.pl/?feed=rss2
+- template: /templates/default.tmpl
+
+# Thalium
+https://blog.thalium.re/index.xml
+- template: /templates/thalium.tmpl
+
+# James (tiraniddo) Forshaw - Google Project Zero
+https://www.tiraniddo.dev/feeds/posts/default
+- template: /templates/default.tmpl
+
+# Moshe (0xkol) Kol
+https://0xkol.github.io/feed.xml
+- template: /templates/default.tmpl
+
+# JPCERT Coordination Center official Blog
+https://blogs.jpcert.or.jp/en/atom.xml
+- template: /templates/default.tmpl
+
+# Disabled until https://github.com/skx/rss2email/issues/103 is resolved
+# ESET research
+#https://www.welivesecurity.com/category/cybercrime,malware,eset-research,mobile-security,ransomware,critical-infrastructure,threat-reports,secure-coding/feed/
+#- template: /templates/default.tmpl
+
+# ZDI Blog
+https://www.zerodayinitiative.com/blog/?format=rss
+- template: /templates/default.tmpl
+
+# AhnLab Security Emergency Response Center (ASEC)
+https://asec.ahnlab.com/en/feed/
+- template: /templates/default.tmpl
+
+# KPXC Blog
+https://keepassxc.org/blog/index.xml
+- template: /templates/default.tmpl
+
+# Wiz Blog
+https://www.wiz.io/blog/rss
+- template: /templates/default.tmpl
+
+# Isosceles
+https://blog.isosceles.com/rss/
+- template: /templates/default.tmpl
+
+# Gitlab Blog
+https://about.gitlab.com/atom.xml
+- template: /templates/default.tmpl
+
+# Binarly Blog Post
+https://binarly.io/rss-posts.xml
+- template: /templates/default.tmpl
+
+# FIRST Blog
+https://www.first.org/blog/rss.xml
+- template: /templates/default.tmpl
+
+# Steve on Security Blog
+https://syfuhs.net/feed/rss
+- template: /templates/default.tmpl
+
+# Maksim Chudakov Blog
+https://www.chudamax.com/feed.xml
+- template: /templates/default.tmpl
+
+# The Hacker's Choice (THC) Blog
+https://blog.thc.org/rss.xml
+- template: /templates/default.tmpl
+
+# The Hacker's Choice (THC) KB
+https://iq.thc.org/rss.xml
+- template: /templates/default.tmpl
+
+# Drew DeVault's Blog
+# The creator of sway
+https://drewdevault.com/blog/index.xml
+- template: /templates/default.tmpl
+
+# Jmpeax's Blog
+https://jmpeax.dev/feed.xml
+- template: /templates/default.tmpl
+
+# Null Signal Blog (Android Netrunner)
+https://nullsignal.games/feed/
+- template: /templates/default.tmpl
+
+#### TODO  #### # https://ryanagood.com/
+#### TODO  #### # I can make it with urlwatch
+#### TODO  #### 
+#### TODO  #### # https://blogs.blackberry.com/en/category/research-and-intelligence#research%2520&%2520intelligence
+#### TODO  #### # I can make it with urlwatch
+#### TODO  #### # https://0xdarkvortex.dev/tags/
+#### TODO  #### # or ^ https://0xdarkvortex.dev/tags/blogs/
+#### TODO  #### # I can make it with urlwatch
+#### TODO  #### # Curl SA (needs urlwatch)
+#### TODO  #### https://curl.se/docs/security.html
+
+#### WONTDO #### # It would be nice to be able to retreive the <re:rank> value, which indicates
+#### WONTDO #### # how may thumbs up the question got, and filter only for those with a value
+#### WONTDO #### # higher than 10. But this cannot be done with rss2email due to how gofeed library
+#### WONTDO #### # is implemented. I asked about that here: https://github.com/skx/rss2email/issues/102
+#### WONTDO #### 
+#### WONTDO #### https://security.stackexchange.com/feeds
+#### WONTDO #### - template: /templates/default.tmpl
+
+#   ███████╗███████╗██╗███╗   ██╗███████╗
+#   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
+#   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
+#   ██╔══╝   ███╔╝  ██║██║╚██╗██║██╔══╝  
+#   ███████╗███████╗██║██║ ╚████║███████╗
+#   ╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝
+
+# The Appsec Ezine
+https://github.com/Simpsonpt/AppSecEzine/commits/master.atom
+- template: /templates/default.tmpl
+- include-title: AppSec Ezine #
+
+https://xl-sec.github.io/AppSecEzine/latest.rss
+- template: /templates/default.tmpl
+
+# POC||GTFO Ezine feed - from the Evan Sultanik website (one of the main mirrors)
+http://feeds.feedburner.com/EvanSultanik
+- template: /templates/default.tmpl
+
+# http://uninformed.org
+http://uninformed.org/uninformed.rss
+- template: /templates/default.tmpl
+
+#### TODO  #### # Phrack Ezine
+#### TODO  #### # I can maybe monitor it via Urlwatch2
+#### TODO  #### http://www.phrack.org/archives/issues/
+
+#   ███████╗███████╗ ██████╗     █████╗ ██████╗ ██╗   ██╗██╗███████╗ ██████╗ ██████╗ ██╗   ██╗
+#   ██╔════╝██╔════╝██╔════╝    ██╔══██╗██╔══██╗██║   ██║██║██╔════╝██╔═══██╗██╔══██╗╚██╗ ██╔╝
+#   ███████╗█████╗  ██║         ███████║██║  ██║██║   ██║██║███████╗██║   ██║██████╔╝ ╚████╔╝ 
+#   ╚════██║██╔══╝  ██║         ██╔══██║██║  ██║╚██╗ ██╔╝██║╚════██║██║   ██║██╔══██╗  ╚██╔╝  
+#   ███████║███████╗╚██████╗    ██║  ██║██████╔╝ ╚████╔╝ ██║███████║╚██████╔╝██║  ██║   ██║   
+#   ╚══════╝╚══════╝ ╚═════╝    ╚═╝  ╚═╝╚═════╝   ╚═══╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
+
+# GitHub Security Lab
+https://securitylab.github.com/advisories/feed
+- template: /templates/default.tmpl
+
+# Drupal
+https://www.drupal.org/security/rss.xml
+- template: /templates/default.tmpl
+
+# PowerDNS
+# OLD https://blog.powerdns.com/feed/
+https://blog.powerdns.com/rss.xml
+- template: /templates/default.tmpl
+
+# RustSec Advisories
+# SA for Rust crates published via https://crates.io 
+https://rustsec.org/feed.xml
+- template: /templates/default.tmpl
+
+# Rust
+# SA from the main Rust blog
+https://blog.rust-lang.org/feed.xml
+- template: /templates/default.tmpl
+
+# Debian Security Advisories (DSA) are gotten by the debian-security-announce ML, since
+# it provides much more detailed information compared to the DSA RSS-feed.
+# DSA ML:       https://lists.debian.org/debian-security-announce/
+# DSA RSS-feed: https://www.debian.org/security/dsa
+#
+# Debian Security Advisories (DSA) are fetched from the debian-security-announce ML, since
+# it provides much more detailed information compared to the DSA RSS-feed.
+# DSA ML:       https://lists.debian.org/debian-security-announce/
+# DSA RSS-feed: https://www.debian.org/security/dsa
+#
+# Ubuntu Security Notice (USN) are fetched from the ubuntu-security-announce ML.
+# USN ML:       https://lists.ubuntu.com/mailman/listinfo/ubuntu-security-announce
+#
+# RedHat Security Advisories (RHSA) are gotten by the rhsa-announce ML.
+# RHSA ML:      https://listman.redhat.com/mailman/listinfo/rhsa-announce
+#
+# openSUSE Security Update (openSUSE-SU/SUSE-SU) are fetched from the security-announce ML.
+# If the update is shipped to both openSUSE and SUSE, then the name is SUSE-SU, while if
+# it's exclusive for openSUSE it is named openSUSE-SU.
+# openSUSE-SU:  https://lists.opensuse.org/archives/list/security-announce@lists.opensuse.org
+#
+# SUSE Security Update (SUSE-SU) are fetched from the sle-security-updates ML.
+# It also notify about "SUSE Container Update Advisory" and "SUSE Image Update Advisory" as well. 
+# SUSE-SU:      https://lists.suse.com/mailman/listinfo/sle-security-updates
+#
+# Arch Linux Security Advisory (ASA) are fetched from the arch-security ML.
+# ASA:          https://lists.archlinux.org/listinfo/arch-security
+#
+# Gentoo Linux Security Advisories (GLSA) are fetched from the gentoo-announce ML.
+# GLSA:         https://security.gentoo.org/glsa
+
+# Fedora SA
+https://bodhi.fedoraproject.org/rss/updates/?search=&status=stable&type=security
+- template: /templates/default.tmpl
+
+# Weechat SA are fetched from the weechat-security ML.
+# Weechat SA:   https://lists.nongnu.org/mailman/listinfo/weechat-security
+
+# Google Cloud Products (GCP) Security Bulletins
+https://cloud.google.com/feeds/google-cloud-security-bulletins.xml
+- template: /templates/default.tmpl
+
+# Tomcat SA are fetched from the announce ML.
+# https://lists.apache.org/list?announce@tomcat.apache.org
+
+# Jenkins SA are fetched from the osss ML.
+# http://oss-security.openwall.org/wiki/mailing-lists/oss-security
+
+# WebKit SA are fetched from the osss ML.
+# http://oss-security.openwall.org/wiki/mailing-lists/oss-security
+
+# TOR Security Advisory
+https://tails.boum.org/security/index.en.atom
+- template: /templates/default.tmpl
+
+https://images.videolan.org/videolan-news.rss
+- template: /templates/default.tmpl
+
+# Mozilla SA (Firefox and Thunderbird)
+# https://www.mozilla.org/en-US/security/advisories/
+http://rss-bridge.home/?action=display&bridge=MozillaSecurityBridge&format=Atom
+- template: /templates/default.tmpl
+
+# OpenWRT SA
+# https://openwrt.org/advisory/start
+https://openwrt.org/feed.php?mode=list&ns=advisory
+- template: /templates/default.tmpl
+
+# Gitlab
+https://about.gitlab.com/security-releases.xml
+- template: /templates/default.tmpl
+
+# ZDI Upcoming SA
+https://www.zerodayinitiative.com/rss/upcoming/
+- template: /templates/default.tmpl
+
+# ZDI Published SA
+https://www.zerodayinitiative.com/rss/published/
+- template: /templates/default.tmpl
+
+# Binarly SA
+https://binarly.io/rss-advisories.xml
+- template: /templates/default.tmpl
+
+# Linux Kernel CNA Advisories
+https://lore.kernel.org/linux-cve-announce/new.atom
+- template: /templates/default.tmpl
+
+# UniFi Security Advisory Bulletin
+https://community.ui.com/rss/releases/Security/f3f45fa2-1784-4594-b48d-28baf317b208
+- template: /templates/default.tmpl
+
+#### TODO  #### # Android Monthly Security Bulletin
+#### TODO  #### # I've not been able to find feeds or a dedicated ML where to retrieve those.
+#### TODO  #### # Worst case I'll need to do sth via Urlwatch
+#### TODO  #### https://source.android.com/security/bulletin
+#### TODO  #### 
+#### TODO  #### # openssl SA
+#### TODO  #### # I'll need to do sth via Urlwatch
+#### TODO  #### https://www.openssl.org/news/secadv/
+#### TODO  #### 
+#### TODO  #### # curl, need urlwatch for that
+#### TODO  #### https://curl.se/docs/security.html
+
+#   ██████╗ ███████╗██╗     ███████╗ █████╗ ███████╗███████╗
+#   ██╔══██╗██╔════╝██║     ██╔════╝██╔══██╗██╔════╝██╔════╝
+#   ██████╔╝█████╗  ██║     █████╗  ███████║███████╗█████╗  
+#   ██╔══██╗██╔══╝  ██║     ██╔══╝  ██╔══██║╚════██║██╔══╝  
+#   ██║  ██║███████╗███████╗███████╗██║  ██║███████║███████╗
+#   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝
+
+# ClamAV - https://www.clamav.net
+https://feeds.feedburner.com/ClamAV
+- template: /templates/default.tmpl
+
+# Chrome releases blog
+https://chromereleases.googleblog.com/atom.xml
+- template: /templates/chrome-blog.tmpl
+
+# Intel microcode
+https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/tags.atom
+- template: /templates/default.tmpl
+
+# Userscripts used within the SUSE Security Team
+# Personal fork at: https://github.com/StayPirate/userscript
+https://gitlab.suse.de/gsonnu/userscripts.atom
+- template: /templates/default.tmpl
+- insecure: true
+
+# imtools for the SUSE Security Team
+https://gitlab.suse.de/security/imtools.atom
+- template: /templates/default.tmpl
+- insecure: true
+
+# Secbox - https://github.com/StayPirate/secbox
+https://github.com/StayPirate/secbox/tags.atom
+- template: /templates/default.tmpl
+
+# secbox-image
+https://gitlab.suse.de/security/secbox-image.atom
+- template: /templates/default.tmpl
+- insecure: true
+
+# Nmap/Npcap announcements are fetched from the nmap announce ML.
+# https://nmap.org/mailman/listinfo/announce
+
+#### TODO  #### # Need urlwatch
+#### TODO  #### https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/refs
+#### TODO  #### - template: /templates/default.tmpl
+
+# KeePassXC
+https://github.com/keepassxreboot/keepassxc/releases.atom
+- template: /templates/default.tmpl
+
+# UniFi Network Application
+https://community.ui.com/rss/releases/UniFi-Network-Application/e6712595-81bb-4829-8e42-9e2630fabcfe
+- template: /templates/default.tmpl
+
+# Apple Products
+https://developer.apple.com/news/releases/rss/releases.rss
+- template: /templates/default.tmpl
+
+# Foot Releases
+# https://codeberg.org/dnkl/foot/releases
+https://codeberg.org/dnkl/foot/releases.rss
+- template: /templates/default.tmpl
+
+# Wireshark
+https://gitlab.com/wireshark/wireshark/-/tags?format=atom
+- template: /templates/default.tmpl
+
+# Proxmox VE
+https://my.proxmox.com/en/announcements/tag/proxmox-ve/rss
+- template: /templates/default.tmpl
+
+# Thunderbird
+https://www.thunderbird.net/en-US/thunderbird/releases/atom.xml
+- template: /templates/default.tmpl
+
+#   ███╗   ██╗███████╗██╗    ██╗███████╗
+#   ████╗  ██║██╔════╝██║    ██║██╔════╝
+#   ██╔██╗ ██║█████╗  ██║ █╗ ██║███████╗
+#   ██║╚██╗██║██╔══╝  ██║███╗██║╚════██║
+#   ██║ ╚████║███████╗╚███╔███╔╝███████║
+#   ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝ ╚══════╝
+
+# Arch Linux News
+# It handles the same content of arch-announce ML
+https://archlinux.org/feeds/news/
+- template: /templates/default.tmpl
+
+# Web3 is going great
+https://web3isgoinggreat.com/feed.xml
+- template: /templates/default.tmpl
+
+# Breaches from HIBP
+# https://haveibeenpwned.com/
+http://rss-bridge.home/?action=display&bridge=HaveIBeenPwnedBridge&order=dateAdded&item_limit=20&format=Atom
+- template: /templates/default.tmpl
+
+# Linuxiac
+https://linuxiac.com/feed/
+- template: /templates/default.tmpl
+
+# devops.com
+https://devops.com/feed/
+- template: /templates/default.tmpl
+
+# Devclass
+https://devclass.com/feed/
+- template: /templates/default.tmpl
+
+# Phoronix
+https://www.phoronix.com/rss.php
+- template: /templates/default.tmpl
+
+#   ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
+#   ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
+#   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ 
+#   ██║███╗██║██║   ██║██╔══██╗██╔═██╗ 
+#   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗
+#    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+
+# SMASH: MRs merged to master
+https://gitlab.suse.de/tools/smash/-/merge_requests.atom?feed_token=MyLyzjH5-223REc-gtM-&scope=all&state=merged&target_branch=master
+- template: /templates/default.tmpl
+- insecure: true
+
+#   ██████╗  ██████╗ ██████╗  ██████╗ █████╗ ███████╗████████╗
+#   ██╔══██╗██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝╚══██╔══╝
+#   ██████╔╝██║   ██║██║  ██║██║     ███████║███████╗   ██║   
+#   ██╔═══╝ ██║   ██║██║  ██║██║     ██╔══██║╚════██║   ██║   
+#   ██║     ╚██████╔╝██████╔╝╚██████╗██║  ██║███████║   ██║   
+#   ╚═╝      ╚═════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
+
+# Late Night Linux, Linux Downtime, and Linux After Dark
+# https://latenightlinux.com
+https://latenightlinux.com/feed/all
+- template: /templates/default.tmpl
+- delay: 5
+
+# Dayzerosec Podcast - https://dayzerosec.com/podcast/
+# A weekly podcast for anyone interested in in exploit development and vulnerability research
+https://dayzerosec.com/feed.xml
+- template: /templates/default.tmpl
+
+# A weekly podcast talking about the latest developments and updates from the Ubuntu Security team.
+https://ubuntusecuritypodcast.org/episode/index.xml
+- template: /templates/default.tmpl
+
+# Darknet Diaries podcast
+http://rss-bridge-proxy.home/spotify/show/4XPl3uEEL9hvqMkoZrzbx5
+- template: /templates/default.tmpl
+
+# Thunderbird Podcast
+https://feeds.transistor.fm/thundercast
+- template: /templates/default.tmpl
+
+# Fossified
+https://pod.fossified.com/podcast.rss
+- template: /templates/default.tmpl
+
+# Open Source Security Podcast
+# https://opensourcesecurity.io/
+https://opensourcesecuritypodcast.libsyn.com/rss
+- template: /templates/default.tmpl
+
+# The Defender's Advantage Podcast (Mandiant)
+http://rss-bridge-proxy.home/spotify/show/7CFsvR9lOLZiNoVDUltL9X
+- template: /templates/default.tmpl
+- delay: 5
+
+# Naked Security Podcast from Sophos
+http://rss-bridge-proxy.home/spotify/show/4AhwI3oHRgqO4v4Q5ZGaq9
+- template: /templates/default.tmpl
+
+# Security Now
+https://feeds.twit.tv/sn.xml
+- template: /templates/default.tmpl
+
+# The ReadME Podcast from Github
+http://rss-bridge-proxy.home/spotify/show/660KitvdJDX2vUmioAbwSQ
+- template: /templates/default.tmpl
+
+# The Cyber Show
+# https://cybershow.uk/
+http://rss-bridge-proxy.home/spotify/show/0av5zTSOSIuBBtOjqjJWFc
+- template: /templates/default.tmpl
+
+# FIRST Impressions
+# https://www.first.org/podcasts
+http://rss-bridge-proxy.home/spotify/show/6mdVBCDxhGKuULeca9psdl
+- template: /templates/default.tmpl

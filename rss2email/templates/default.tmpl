@@ -1,0 +1,66 @@
+{{/* This is the default template which is used by default to generate emails.
+
+     As you might imagine it is a Golang text/template file.
+
+     Several fields and functions are available:
+
+      {{.FeedTitle}}  - The human-readable title of the source feed.
+      {{.Feed}}       - The URL of the feed from which the item came.
+      {{.From}}       - The email address which sends the email.
+      {{.Link}}       - The link to the new entry.
+      {{.Subject}}    - The subject of the new entry.
+      {{.To}}         - The recipient of the email.
+
+     There is also access to the {{.RSSFeed}} and {{.RSSItem}} available, in
+     case you need access to other fields which are not exported expliclty.
+     Using that approach you can access {{.RSSItem.GUID}}, for example.
+
+     Functions:
+
+      {{env "USER"}}              -> Return the given environmental variable
+      {{quoteprintable .Link}}    -> Quote the specified field.
+      {{split "STRING:HERE" ":"}} -> Split a string into an array by deliminator
+
+     This comment will be stripped from the generated email.
+
+  */ -}}
+Content-Type: multipart/mixed; boundary=21ee3da964c7bf70def62adb9ee1a061747003c026e363e47231258c48f1
+From: {{env "FROM_EMAIL"}}
+To: {{.To}}
+Subject: {{.Subject}}
+{{- if env "RSS2EMAIL_INSTANCE_NAME"}}
+X-RSS-Instance: {{env "RSS2EMAIL_INSTANCE_NAME"}}
+{{- end}}
+{{- if .Tag}}
+X-RSS-Tags: {{.Tag}}
+{{- end}}
+X-RSS-Link: {{.Link}}
+X-RSS-Feed: {{.Feed}}
+X-RSS-GUID: {{.RSSItem.GUID}}
+{{- if .RSSItem.Categories}}
+Keywords: {{.RSSItem.Categories}}
+{{- end}}
+Rank: {{.RSSFeed.Custom.published}}
+Content-Base: {{.Link}}
+Mime-Version: 1.0
+
+--21ee3da964c7bf70def62adb9ee1a061747003c026e363e47231258c48f1
+Content-Type: multipart/related; boundary=76a1282373c08a65dd49db1dea2c55111fda9a715c89720a844fabb7d497
+
+--76a1282373c08a65dd49db1dea2c55111fda9a715c89720a844fabb7d497
+Content-Type: multipart/alternative; boundary=4186c39e13b2140c88094b3933206336f2bb3948db7ecf064c7a7d7473f2
+
+--4186c39e13b2140c88094b3933206336f2bb3948db7ecf064c7a7d7473f2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+{{.Text}}
+--4186c39e13b2140c88094b3933206336f2bb3948db7ecf064c7a7d7473f2
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+{{.HTML}}
+--4186c39e13b2140c88094b3933206336f2bb3948db7ecf064c7a7d7473f2--
+
+--76a1282373c08a65dd49db1dea2c55111fda9a715c89720a844fabb7d497--
+--21ee3da964c7bf70def62adb9ee1a061747003c026e363e47231258c48f1--

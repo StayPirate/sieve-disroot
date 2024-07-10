@@ -1,0 +1,30 @@
+From: ggabrielli+feedbot@suse.de
+To: {{.To}}
+Subject: {{.Subject}}
+X-RSS-Instance: <crazybyte-security-feed>
+{{- if env "RSS2EMAIL_INSTANCE_NAME"}}
+X-RSS-Instance: {{env "RSS2EMAIL_INSTANCE_NAME"}}
+{{- end}}
+{{- if .Tag}}
+X-RSS-Tags: {{.Tag}}
+{{- end}}
+X-RSS-Link: https://blog.thalium.re{{.Link}}
+X-RSS-Feed: https://blog.thalium.re{{.Feed}}
+X-RSS-GUID: https://blog.thalium.re{{.RSSItem.GUID}}
+{{- if .RSSItem.Categories}}
+Keywords: {{.RSSItem.Categories}}
+{{- end}}
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Base: https://blog.thalium.re{{.Link}}
+Content-Type: text/html; charset=UTF-8
+
+<html>
+  <head>
+    <title>{{.Subject}}</title>
+    <base href="https://blog.thalium.re{{.Link}}">
+  </head>
+  <body id="msgFeedSummaryBody" selected="false">
+    security update
+  </body>
+</html>
