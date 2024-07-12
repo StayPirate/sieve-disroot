@@ -1,0 +1,66 @@
+services:
+
+  rss2email_git-local-sync:
+    image: "ghcr.io/staypirate/git-local-sync:master"
+    container_name: "rss2email_git-local-sync"
+    hostname: "git-local-sync"
+    restart: "unless-stopped"
+    entrypoint: "/init.sh"
+    command: "--branch master https://github.com/StayPirate/sieve-disroot.git"
+    stdin_open: true
+    tty: true
+    logging:
+      driver: "json-file"
+      options: {}
+    environment:
+      - "GIT_LOCAL_SYNC_SLEEP: 60"
+      - "TZ=Europe/Rome"
+    mac_address: de:ad:be:ef:10:10
+    networks:
+      Untrusted:
+        ipv4_address: 172.16.10.10
+    dns:
+      - 172.16.10.1
+    volumes:
+      - "rss2email_config:/repo"
+
+  rss2email:
+    image: "ghcr.io/skx/rss2email:master"
+    container_name: "rss2email_rss2email"
+    hostname: "rss2email"
+    entrypoint: "rss2email"
+    command: "--config /app/.rss2email/config/rss2email --state /app/.rss2email/state/state.db daemon crazybyte+feed@disroot.org"
+    restart: "unless-stopped"
+    user: "app"
+    working_dir: "/app"
+    stdin_open: true
+    tty: true
+    logging:
+      driver: "json-file"
+      options: {}
+    #env_file:
+    #  - .env
+    environment:
+      - "TZ=Europe/Rome"
+    mac_address: de:ad:be:ef:10:09
+    networks:
+      Untrusted:
+        ipv4_address: 172.16.10.9
+    dns:
+      - 172.16.10.1
+    volumes:
+      - "rss2email_state:/var/rss2email"
+      - "rss2email_config:/app/.rss2email/config:ro"
+
+volumes:
+  rss2email_state:
+  rss2email_config:
+
+networks:
+  Untrusted:
+    external: true
+    name: "Untrusted"
+    ipam:
+      config:
+        - subnet: 172.16.10.0/24
+          gateway: 172.16.10.1
