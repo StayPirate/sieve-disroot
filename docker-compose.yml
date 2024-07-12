@@ -42,8 +42,6 @@ services:
     #  - .env
     environment:
       - "TZ=Europe/Rome"
-      - "LOG_LEVEL=ERROR"
-      - "SLEEP=15"
     mac_address: de:ad:be:ef:10:09
     networks:
       Untrusted:
