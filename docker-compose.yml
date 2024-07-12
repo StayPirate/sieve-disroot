@@ -29,7 +29,7 @@ services:
     container_name: "rss2email_rss2email"
     hostname: "rss2email"
     entrypoint: "rss2email"
-    command: "--config /app/.rss2email/config/rss2email --state /app/.rss2email/state/state.db daemon crazybyte+feed@disroot.org"
+    command: "daemon -send=false crazybyte+feed@disroot.org"
     restart: "unless-stopped"
     user: "app"
     working_dir: "/app"
@@ -50,7 +50,7 @@ services:
       - 172.16.10.1
     volumes:
       - "rss2email_state:/var/rss2email"
-      - "rss2email_config:/app/.rss2email/config:ro"
+      - "rss2email_config:/app/.rss2email:ro"
 
 volumes:
   rss2email_state:
