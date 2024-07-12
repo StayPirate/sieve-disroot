@@ -29,7 +29,7 @@ services:
     container_name: "rss2email_rss2email"
     hostname: "rss2email"
     entrypoint: "rss2email"
-    command: "daemon -send=false crazybyte+feed@disroot.org"
+    command: "daemon crazybyte+feed@disroot.org"
     restart: "unless-stopped"
     user: "app"
     working_dir: "/app"
