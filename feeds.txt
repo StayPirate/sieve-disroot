@@ -292,6 +292,10 @@ https://jmpeax.dev/feed.xml
 https://nullsignal.games/feed/
 - template: /templates/default.tmpl
 
+# https://labs.watchtowr.com/
+https://labs.watchtowr.com/rss/
+- template: /templates/default.tmpl
+
 #### TODO  #### # https://ryanagood.com/
 #### TODO  #### # I can make it with urlwatch
 #### TODO  #### 

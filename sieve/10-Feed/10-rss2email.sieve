@@ -504,6 +504,13 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[WatchTowr Blog]
+    # https://labs.watchtowr.com/
+    if header :contains "X-RSS-Feed" "labs.watchtowr.com" {
+        fileinto :create "Feed.Blog.WatchTowr";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
