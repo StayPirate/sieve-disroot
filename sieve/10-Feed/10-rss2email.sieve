@@ -511,6 +511,14 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
+    # rule:[Cyril (Mayfly) Servieres Blog]
+    # https://mayfly277.github.io/
+    if header :contains "X-RSS-Feed" "mayfly277" {
+        fileinto :create "Feed.Blog.Good Reads";
+        addflag "windows";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  

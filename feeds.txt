@@ -296,6 +296,11 @@ https://nullsignal.games/feed/
 https://labs.watchtowr.com/rss/
 - template: /templates/default.tmpl
 
+# Cyril (Mayfly) Servieres Blog (Windows)
+# https://mayfly277.github.io
+https://mayfly277.github.io/feed.xml
+- template: /templates/default.tmpl
+
 #### TODO  #### # https://ryanagood.com/
 #### TODO  #### # I can make it with urlwatch
 #### TODO  #### 
