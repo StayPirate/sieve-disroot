@@ -99,7 +99,7 @@ https://stackoverflow.blog/feed/
 - template: /templates/default.tmpl
 
 # Center for Transparency and Digital Human Rights
-https://www.hermescenter.org/press/feed/
+https://hermescenter.org/category/news/feed/
 - template: /templates/default.tmpl
 
 https://www.copernicani.it/rss
