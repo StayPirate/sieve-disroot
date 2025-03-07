@@ -166,8 +166,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[copernicani]
     # https://www.copernicani.it
-    if allof ( header :is "X-RSS-Feed" "https://www.copernicani.it",
-               header :contains "Keywords" [ "cybersecurity", "cyberwarfare" ] ) {
+    if header :contains "X-RSS-Feed" "copernicani.it" {
         fileinto :create "Feed.Blog.Hacktivism";
         addflag "italian";
         stop;
