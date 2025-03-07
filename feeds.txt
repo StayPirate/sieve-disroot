@@ -284,9 +284,12 @@ https://iq.thc.org/rss.xml
 https://drewdevault.com/blog/index.xml
 - template: /templates/default.tmpl
 
+# Domain expired on 23-12-2024.
+# I see a different domain (jmpr4xp4x.io) to be registered by the same author.
+# Unfortunately, it points to an empty webserver. Maybe in future he will move his blog there (?).
 # Jmpeax's Blog
-https://jmpeax.dev/feed.xml
-- template: /templates/default.tmpl
+# https://jmpeax.dev/feed.xml
+# - template: /templates/default.tmpl
 
 # Null Signal Blog (Android Netrunner)
 https://nullsignal.games/feed/
