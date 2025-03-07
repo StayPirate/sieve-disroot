@@ -627,7 +627,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[TOR SA]
     # https://tails.boum.org/security/index.en.html
-    if header :contains "X-RSS-Feed" "https://tails.boum.org/security/index.en.html" {
+    if header :contains "X-RSS-Feed" [ "tails.boum.org", "tails.net" ] {
         fileinto :create "Feed.SA.TOR";
         stop;
     }
