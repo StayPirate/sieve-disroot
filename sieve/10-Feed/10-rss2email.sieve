@@ -438,13 +438,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
-    # rule:[Binarly Blog]
-    # https://binarly.io/posts/index.html
-    if header :contains "X-RSS-Feed" "binarly.io/posts" {
-        fileinto :create "Feed.Blog.Binarly";
-        stop;
-    }
-
     # rule:[FIRST Blog]
     # https://www.first.org/blog/
     if header :contains "X-RSS-Feed" "first.org/blog" {
@@ -671,7 +664,7 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
 
     # rule:[Binarly SA]
     # https://binarly.io/advisories/index.html
-    if header :contains "X-RSS-Feed" "binarly.io/advisories" {
+    if header :contains "X-RSS-Feed" "binarly.io" {
         fileinto :create "Feed.SA.Binarly";
         stop;
     }

@@ -252,10 +252,6 @@ https://blog.isosceles.com/rss/
 https://about.gitlab.com/atom.xml
 - template: /templates/default.tmpl
 
-# Binarly Blog Post
-https://binarly.io/rss-posts.xml
-- template: /templates/default.tmpl
-
 # FIRST Blog
 https://www.first.org/blog/rss.xml
 - template: /templates/default.tmpl
@@ -459,7 +455,7 @@ https://www.zerodayinitiative.com/rss/published/
 - template: /templates/default.tmpl
 
 # Binarly SA
-https://binarly.io/rss-advisories.xml
+https://www.binarly.io/advisories/rss.xml
 - template: /templates/default.tmpl
 
 # Linux Kernel CNA Advisories
