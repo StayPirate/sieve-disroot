@@ -440,7 +440,7 @@ https://images.videolan.org/videolan-news.rss
 
 # Mozilla SA (Firefox and Thunderbird)
 # https://www.mozilla.org/en-US/security/advisories/
-http://rss-bridge.home/?action=display&bridge=MozillaSecurityBridge&format=Atom
+https://rss-bridge.home/?action=display&bridge=MozillaSecurityBridge&format=Atom
 - template: /templates/default.tmpl
 
 # OpenWRT SA
@@ -577,7 +577,7 @@ https://web3isgoinggreat.com/feed.xml
 
 # Breaches from HIBP
 # https://haveibeenpwned.com/
-http://rss-bridge.home/?action=display&bridge=HaveIBeenPwnedBridge&order=dateAdded&item_limit=20&format=Atom
+https://rss-bridge.home/?action=display&bridge=HaveIBeenPwnedBridge&order=dateAdded&item_limit=20&format=Atom
 - template: /templates/default.tmpl
 
 # Linuxiac
@@ -631,8 +631,8 @@ https://ubuntusecuritypodcast.org/episode/index.xml
 - template: /templates/default.tmpl
 
 # Darknet Diaries podcast
-http://rss-bridge-proxy.home/spotify/show/4XPl3uEEL9hvqMkoZrzbx5
-- template: /templates/default.tmpl
+#http://rss-bridge-proxy.home/spotify/show/4XPl3uEEL9hvqMkoZrzbx5
+#- template: /templates/default.tmpl
 
 # Thunderbird Podcast
 https://feeds.transistor.fm/thundercast
@@ -648,28 +648,28 @@ https://opensourcesecuritypodcast.libsyn.com/rss
 - template: /templates/default.tmpl
 
 # The Defender's Advantage Podcast (Mandiant)
-http://rss-bridge-proxy.home/spotify/show/7CFsvR9lOLZiNoVDUltL9X
-- template: /templates/default.tmpl
-- delay: 5
+#http://rss-bridge-proxy.home/spotify/show/7CFsvR9lOLZiNoVDUltL9X
+#- template: /templates/default.tmpl
+#- delay: 5
 
 # Naked Security Podcast from Sophos
-http://rss-bridge-proxy.home/spotify/show/4AhwI3oHRgqO4v4Q5ZGaq9
-- template: /templates/default.tmpl
+#http://rss-bridge-proxy.home/spotify/show/4AhwI3oHRgqO4v4Q5ZGaq9
+#- template: /templates/default.tmpl
 
 # Security Now
 https://feeds.twit.tv/sn.xml
 - template: /templates/default.tmpl
 
 # The ReadME Podcast from Github
-http://rss-bridge-proxy.home/spotify/show/660KitvdJDX2vUmioAbwSQ
-- template: /templates/default.tmpl
+#http://rss-bridge-proxy.home/spotify/show/660KitvdJDX2vUmioAbwSQ
+#- template: /templates/default.tmpl
 
 # The Cyber Show
 # https://cybershow.uk/
-http://rss-bridge-proxy.home/spotify/show/0av5zTSOSIuBBtOjqjJWFc
-- template: /templates/default.tmpl
+#http://rss-bridge-proxy.home/spotify/show/0av5zTSOSIuBBtOjqjJWFc
+#- template: /templates/default.tmpl
 
 # FIRST Impressions
 # https://www.first.org/podcasts
-http://rss-bridge-proxy.home/spotify/show/6mdVBCDxhGKuULeca9psdl
-- template: /templates/default.tmpl
+#http://rss-bridge-proxy.home/spotify/show/6mdVBCDxhGKuULeca9psdl
+#- template: /templates/default.tmpl
