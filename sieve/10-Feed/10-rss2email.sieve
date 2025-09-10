@@ -207,13 +207,6 @@ if header :is "X-RSS-Instance" "crazybyte-security-feed" {
         stop;
     }
 
-    # rule:[Avast]
-    # https://decoded.avast.io/
-    if header :contains "X-RSS-Feed" "decoded.avast.io" {
-        fileinto :create "Feed.Blog.Avast";
-        stop;
-    }
-
     # rule:[Google Project Zero]
     # https://googleprojectzero.blogspot.com/
     if header :contains "X-RSS-Feed" "googleprojectzero.blogspot.com" {

@@ -121,9 +121,6 @@ https://grsecurity.net/blog.rss
 https://www.intezer.com/blog/feed/
 - template: /templates/default.tmpl
 
-https://decoded.avast.io/feed/
-- template: /templates/default.tmpl
-
 # Google Project Zero
 # https://googleprojectzero.blogspot.com/
 https://googleprojectzero.blogspot.com/feeds/posts/default
