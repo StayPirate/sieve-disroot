@@ -442,6 +442,7 @@ https://images.videolan.org/videolan-news.rss
 # https://www.mozilla.org/en-US/security/advisories/
 https://rss-bridge.home/?action=display&bridge=MozillaSecurityBridge&format=Atom
 - template: /templates/default.tmpl
+- insecure: true
 
 # OpenWRT SA
 # https://openwrt.org/advisory/start
@@ -579,6 +580,7 @@ https://web3isgoinggreat.com/feed.xml
 # https://haveibeenpwned.com/
 https://rss-bridge.home/?action=display&bridge=HaveIBeenPwnedBridge&order=dateAdded&item_limit=20&format=Atom
 - template: /templates/default.tmpl
+- insecure: true
 
 # Linuxiac
 https://linuxiac.com/feed/
