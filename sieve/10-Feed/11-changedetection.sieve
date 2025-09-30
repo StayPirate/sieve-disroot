@@ -122,6 +122,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # rule:[KDE Security]
+    # https://kde.org/info/security/
+    if header :contains "Subject" "KDE Security" {
+        fileinto :create "Feed.SA.KDE";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
