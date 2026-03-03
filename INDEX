@@ -108,6 +108,7 @@
 │   │   │   │   ├── container
 │   │   │   │   └── image
 │   │   │   └── Ubuntu
+│   │   ├── Django
 │   │   ├── Dovecot
 │   │   ├── Drupal
 │   │   ├── GCP

@@ -129,6 +129,13 @@ if header :is "X-Application" "changedetection.io" {
         stop;
     }
 
+    # rule:[Django]
+    # https://docs.djangoproject.com/en/dev/releases/security/
+    if header :contains "Subject" "Django SA" {
+        fileinto :create "Feed.SA.Django";
+        stop;
+    }
+
 #   ███████╗███████╗██╗███╗   ██╗███████╗
 #   ██╔════╝╚══███╔╝██║████╗  ██║██╔════╝
 #   █████╗    ███╔╝ ██║██╔██╗ ██║█████╗  
